@@ -57,7 +57,7 @@ End Section
                 </div>
             </div>
             <div class="portlet-body form">
-                @Using Html.BeginForm("Edit", "Idioma", Nothing, FormMethod.Post, New With {.class = "form-horizontal"})
+                @Using Html.BeginForm("Editar", "Idioma", Nothing, FormMethod.Post, New With {.class = "form-horizontal"})
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(True)
                     

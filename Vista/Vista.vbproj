@@ -4681,7 +4681,6 @@
     <Content Include="Views\Bitacora\Index.vbhtml" />
     <Content Include="Views\Usuario\CambiarClave.vbhtml" />
     <Content Include="Views\Home\Empresa.vbhtml" />
-    <Content Include="Views\Home\Contacto.vbhtml" />
     <Content Include="Views\Resguardo\Index.vbhtml" />
     <Content Include="Views\Contacto\Crear.vbhtml" />
     <Content Include="Views\Contacto\Index.vbhtml" />

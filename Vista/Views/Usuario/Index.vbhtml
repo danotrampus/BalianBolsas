@@ -138,9 +138,9 @@ End Section
                     <div class="row">
                         <div class="col-md-6">
                             @Code
-                                If User.IsInRole("AltaUsuario") Then
+                                If User.IsInRole("CrearUsuario") Then
                                 @<div class="btn-group">
-                                    <a href="@Url.Action("Create")" class="btn green">
+                                    <a href="@Url.Action("Crear")" class="btn green">
                                         Nuevo <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
@@ -217,7 +217,7 @@ End Section
                             <td class="text-center">
                                 @Code
                                     If User.IsInRole("ConsultarUsuario") Then
-                                        @Html.ActionLink("Ver", "Details", New With {.id = currentItem.Id}, New With {.class = "btn default btn-xs"})
+                                        @Html.ActionLink("Ver", "Detalle", New With {.id = currentItem.Id}, New With {.class = "btn default btn-xs"})
                                     End If
                                 End Code
                             </td>

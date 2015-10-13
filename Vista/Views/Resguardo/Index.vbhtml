@@ -92,7 +92,7 @@ End Section
                     <div class="row">
                         <div class="col-md-6">
                             @Code
-                                If User.IsInRole("AltaResguardo") Then
+                                If User.IsInRole("CrearResguardo") Then
                                     @<div class="btn-group">
                                          <a class="btn green" data-toggle="modal" href="#create-confirmation">
                                              Nuevo <i class="fa fa-plus"></i>
@@ -167,7 +167,7 @@ End Section
                                             </div>
                                         End Using
                                     End If
-                                    If User.IsInRole("BajaResguardo") And currentItem.Tipo <> "Restauración" Then
+                                    If User.IsInRole("EliminarResguardo") And currentItem.Tipo <> "Restauración" Then
                                         @<a class="btn red btn-xs" data-toggle="modal" href="#delete-confirmation-@currentItem.Id">Eliminar</a>
                                         @Using Html.BeginForm("Eliminar", "Resguardo")
                                         @Html.AntiForgeryToken()

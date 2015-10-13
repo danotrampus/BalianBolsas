@@ -110,16 +110,16 @@ End Section
                 @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn default"})
             End If
             If Model.Nombre <> "Administrador" And User.IsInRole("EditarPerfil") Then
-                @Html.ActionLink("Editar", "Edit", New With {.id = Model.Id}, New With {.class = "btn blue"})
+                @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn blue"})
             End If
-            If Model.Nombre <> "Administrador" And User.IsInRole("BajaPerfil") Then
+            If Model.Nombre <> "Administrador" And User.IsInRole("EliminarPerfil") Then
                 @<a class="btn red" data-toggle="modal" href="#delete-confirmation">Eliminar</a>
             End If
         End Code 
     </div>
 </div>
 
-@Using Html.BeginForm("Delete", "Perfil", New With {.id = Model.Id}, FormMethod.Get)
+@Using Html.BeginForm("Eliminar", "Perfil", New With {.id = Model.Id}, FormMethod.Get)
 @Html.AntiForgeryToken()
 @<div class="modal fade" id="delete-confirmation" tabindex="-1" role="basic" aria-hidden="true">
     <div class="modal-dialog">

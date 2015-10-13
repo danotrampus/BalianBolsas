@@ -2,8 +2,8 @@
 Imports System.Configuration
 Public Class Datos
 
-    Private Str As String = "Data Source=.;Initial Catalog=BalianBolsas;Integrated Security=True"
-    Private Str2 As String = "Data Source=.;Initial Catalog=Master;Integrated Security=True"
+    Private Str As String = "Data Source=.\SQL_UAI;Initial Catalog=BalianBolsas;Integrated Security=True"
+    Private Str2 As String = "Data Source=.\SQL_UAI;Initial Catalog=Master;Integrated Security=True"
     'Private Str As String = ConfigurationSettings.AppSettings("DefaultConnection")
 
     Private Cnn As New SqlConnection(Str)
@@ -88,7 +88,7 @@ Public Class Datos
                 CnnMaster.Open()
             End If
 
-            Dim consulta As String = "BACKUP DATABASE TFI " &
+            Dim consulta As String = "BACKUP DATABASE BalianBolsas " &
                                      "TO DISK = '" & rutaNombre & "'"
 
             Cmd = New SqlCommand
@@ -113,8 +113,8 @@ Public Class Datos
                 CnnMaster.Open()
             End If
 
-            Dim consulta As String = "Alter Database TFI SET SINGLE_USER With ROLLBACK IMMEDIATE" & vbCrLf &
-                                     "RESTORE DATABASE TFI " &
+            Dim consulta As String = "Alter Database BalianBolsas SET SINGLE_USER With ROLLBACK IMMEDIATE" & vbCrLf &
+                                     "RESTORE DATABASE BalianBolsas " &
                                      "FROM DISK = '" & rutaNombre & "'" & " WITH REPLACE"
 
             Cmd = New SqlCommand
