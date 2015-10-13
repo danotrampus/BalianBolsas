@@ -181,6 +181,7 @@
     <Compile Include="Chat\ConexionUsuario.vb" />
     <Compile Include="Chat\UsuarioChatModel.vb" />
     <Compile Include="Controllers\BaseController.vb" />
+    <Compile Include="Controllers\ContactoController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
     <Compile Include="Controllers\BitacoraController.vb" />
     <Compile Include="Controllers\CuentaController.vb" />
@@ -228,6 +229,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\global\css\components-md.css.map" />
+    <Content Include="Content\global\img\quienes-somos.jpg" />
     <Content Include="Content\global\plugins\amcharts\amcharts\plugins\dataloader\examples\data\map.json" />
     <Content Include="Content\global\plugins\amcharts\amcharts\plugins\dataloader\examples\data\MSFT.csv" />
     <Content Include="Content\global\plugins\amcharts\amcharts\plugins\dataloader\examples\data\MSFT_events.csv" />
@@ -4662,26 +4664,30 @@
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Views\Usuario\Index.vbhtml" />
-    <Content Include="Views\Usuario\Details.vbhtml" />
-    <Content Include="Views\Usuario\Create.vbhtml" />
+    <Content Include="Views\Usuario\Detalle.vbhtml" />
+    <Content Include="Views\Usuario\Crear.vbhtml" />
     <Content Include="Views\Home\Index.vbhtml" />
     <Content Include="Views\Shared\_BackEnd.vbhtml" />
     <Content Include="Views\Cuenta\LogIn.vbhtml" />
-    <Content Include="Views\Perfil\Create.vbhtml" />
+    <Content Include="Views\Perfil\Crear.vbhtml" />
     <Content Include="Views\Perfil\Index.vbhtml" />
-    <Content Include="Views\Perfil\Details.vbhtml" />
-    <Content Include="Views\Usuario\Edit.vbhtml" />
-    <Content Include="Views\Perfil\Edit.vbhtml" />
-    <Content Include="Views\Idioma\Edit.vbhtml" />
+    <Content Include="Views\Perfil\Detalle.vbhtml" />
+    <Content Include="Views\Usuario\Editar.vbhtml" />
+    <Content Include="Views\Perfil\Editar.vbhtml" />
+    <Content Include="Views\Idioma\Editar.vbhtml" />
     <Content Include="Views\Usuario\MiCuenta.vbhtml" />
     <Content Include="Views\Usuario\Registrar.vbhtml" />
     <Content Include="Views\Usuario\Activar.vbhtml" />
     <Content Include="Views\Bitacora\Index.vbhtml" />
     <Content Include="Views\Usuario\CambiarClave.vbhtml" />
     <Content Include="Views\Home\Empresa.vbhtml" />
-    <Content Include="Views\Home\Ubicacion.vbhtml" />
     <Content Include="Views\Home\Contacto.vbhtml" />
     <Content Include="Views\Resguardo\Index.vbhtml" />
+    <Content Include="Views\Contacto\Crear.vbhtml" />
+    <Content Include="Views\Contacto\Index.vbhtml" />
+    <Content Include="Views\Home\Faq.vbhtml" />
+    <Content Include="Views\Home\PoliticaPrivacidad.vbhtml" />
+    <Content Include="Views\Home\TerminosCondiciones.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

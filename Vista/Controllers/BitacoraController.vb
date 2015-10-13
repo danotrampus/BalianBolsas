@@ -9,7 +9,7 @@ Public Class BitacoraController
         Me.vBll = New BitacoraBLL()
     End Sub
 
-    <Autorizar(Roles:="ListarBitacora")>
+    <Autorizar(Roles:="ListarBitacoras")>
     Function Index() As ActionResult
         Return View(Me.vBll.Listar())
     End Function

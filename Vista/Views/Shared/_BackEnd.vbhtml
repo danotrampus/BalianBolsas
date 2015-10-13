@@ -58,13 +58,13 @@ End Code
                         </a>
                     </li>
                     <li class="classic-menu-dropdown">
-                        <a href="@Url.Action("Ubicacion", "Home")">
-                            Ubicación
+                        <a href="@Url.Action("Crear", "Contacto")">
+                            Contacto
                         </a>
                     </li>
                     <li class="classic-menu-dropdown">
-                        <a href="@Url.Action("Contacto", "Home")">
-                            Contacto
+                        <a href="@Url.Action("Faq", "Home")">
+                            Preguntas Frecuentes
                         </a>
                     </li>
                 </ul>
@@ -86,14 +86,14 @@ End Code
                             @Code
                                 If IsNothing(User) Then
                                 @<li>
-                                    <a href="@Url.Action("Registrar", "Usuario")" class="btn btn-default" style="padding-top: 10px;padding-bottom: 10px;margin-right: 5px; margin-top: 3px;">
+                                    <a href="@Url.Action("Registrar", "Usuario")" class="btn btn-default btn-sm" style="margin-right: 5px; margin-top: 7px;">
                                         Registrarse
                                     </a>
                                 </li>
                                 @<li>
-                                    <a href="@Url.Action("LogIn", "Cuenta")" class="btn btn-default" style="padding-top: 10px;padding-bottom: 10px;margin-top: 3px;">
-                                        Iniciar Sesión
-                                    </a>
+                                     <a href="@Url.Action("LogIn", "Cuenta")" class="btn btn-default btn-sm" style="margin-top: 7px;">
+                                         Iniciar Sesión
+                                     </a>
                                 </li>
                                 Else
                                 @<li class="dropdown dropdown-user" data-usuarioid="@User.UsuarioId">
@@ -255,14 +255,14 @@ End Code
     </div>
     <!-- END CONTAINER -->
     <!-- BEGIN FOOTER -->
-    @*<div class="page-footer">
+    <div class="page-footer">
         <div class="page-footer-inner">
-            2014 &copy; Metronic by keenthemes. <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a>
+            2015 &copy; Balian Bolsas. <a href="@Url.Action("PoliticaPrivacidad", "Home")" title="Política de Privacidad" target="_blank" style="color: rgba(138, 148, 160, 1);">Política de Privacidad</a>
         </div>
         <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>
         </div>
-    </div>*@
+    </div>
     <!-- END FOOTER -->
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
     <!-- BEGIN CORE PLUGINS -->

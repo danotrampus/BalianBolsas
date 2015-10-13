@@ -1,4 +1,6 @@
-﻿@Code
+﻿@ModelType EE.Contacto
+
+@Code
     Layout = "~/Views/Shared/_BackEnd.vbhtml"
 End Code
 
@@ -139,32 +141,41 @@ End Section
                     </a>
                 </div>
             </div>
-            <div class="portlet-body">
+            <div class="portlet-body form">
                 <!-- BEGIN FORM-->
-                <form action="#">
-                    <div class="form-group">
-                        <div class="input-icon">
-                            <i class="fa fa-check"></i>
-                            <input type="text" class="form-control" placeholder="Subject">
+                @Using Html.BeginForm()
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(True)
+
+                    @<div class="form-body">
+                        <div class="form-group @IIf(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Asunto))), Nothing, "has-error")">
+                            <div class="input-icon">
+                                <i class="fa fa-check"></i>
+                                @Html.TextBoxFor(Function(model) model.Asunto, New With {.class = "form-control", .placeholder = Html.DisplayNameFor(Function(model) model.Asunto)})
+                            </div>
+                            @Html.ValidationMessageFor(Function(model) model.Asunto, Nothing, New With {.class = "help-block"})
+                        </div>
+                        <div class="form-group @IIf(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.NombreApellido))), Nothing, "has-error")">
+                            <div class="input-icon">
+                                <i class="fa fa-user"></i>
+                                @Html.TextBoxFor(Function(model) model.NombreApellido, New With {.class = "form-control", .placeholder = Html.DisplayNameFor(Function(model) model.NombreApellido)})
+                            </div>
+                            @Html.ValidationMessageFor(Function(model) model.NombreApellido, Nothing, New With {.class = "help-block"})
+                        </div>
+                        <div class="form-group @IIf(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Email))), Nothing, "has-error")">
+                            <div class="input-icon">
+                                <i class="fa fa-envelope"></i>
+                                @Html.TextBoxFor(Function(model) model.Email, New With {.class = "form-control", .placeholder = Html.DisplayNameFor(Function(model) model.Email)})
+                            </div>
+                            @Html.ValidationMessageFor(Function(model) model.Email, Nothing, New With {.class = "help-block"})
+                        </div>
+                        <div class="form-group @IIf(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Mensaje))), Nothing, "has-error")">
+                            @Html.TextAreaFor(Function(model) model.Mensaje, New With {.class = "form-control", .placeholder = Html.DisplayNameFor(Function(model) model.Mensaje), .rows = "3=6"})
+                            @Html.ValidationMessageFor(Function(model) model.Mensaje, Nothing, New With {.class = "help-block"})
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="input-icon">
-                            <i class="fa fa-user"></i>
-                            <input type="text" class="form-control" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-icon">
-                            <i class="fa fa-envelope"></i>
-                            <input type="password" class="form-control" placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <textarea class="form-control" rows="3=6" placeholder="Feedback"></textarea>
-                    </div>
-                    <button type="submit" class="btn green">Submit</button>
-                </form>
+                    @<button type="submit" class="btn green">Enviar</button>
+                End Using
                 <!-- END FORM-->
             </div>
         </div>

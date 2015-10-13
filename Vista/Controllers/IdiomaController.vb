@@ -12,7 +12,7 @@ Public Class IdiomaController
     '
     ' GET: /Idioma/Edit/5
     <Autorizar(Roles:="EditarIdioma")>
-    Function Edit() As ActionResult
+    Function Editar() As ActionResult
         Dim listaIdiomas As List(Of Idioma) = Me.vBLL.Listar()
         Dim modelo As New IdiomaEditarViewModel()
         For Each idioma As Idioma In listaIdiomas
@@ -28,7 +28,7 @@ Public Class IdiomaController
     ' POST: /Idioma/Edit/5
     <Autorizar(Roles:="EditarIdioma")>
     <HttpPost()> _
-    Function Edit(ByVal modelo As IdiomaEditarViewModel) As ActionResult
+    Function Editar(ByVal modelo As IdiomaEditarViewModel) As ActionResult
         Me.vBLL.Editar(modelo.IdiomasId)
         Return RedirectToAction("Index", "Home")
     End Function

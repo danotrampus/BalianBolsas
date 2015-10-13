@@ -62,6 +62,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactoBLL.vb" />
     <Compile Include="ResguardoBLL.vb" />
     <Compile Include="MensajeBLL.vb" />
     <Compile Include="BitacoraBLL.vb" />

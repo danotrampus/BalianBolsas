@@ -22,7 +22,7 @@ Public Class PerfilController
     '
     ' GET: /Perfil/Details/5
     <Autorizar(Roles:="ConsultarPerfil")>
-    Function Details(ByVal id As Integer) As ActionResult
+    Function Detalle(ByVal id As Integer) As ActionResult
         Dim vPerfil As Perfil = Me.vBLL.ConsultarPorId(id)
         Dim json As String = JsonConvert.SerializeObject(vPerfil.ListaPermisos)
         ViewBag.ListaPermisos = json
@@ -31,8 +31,8 @@ Public Class PerfilController
 
     '
     ' GET: /Perfil/Create
-    <Autorizar(Roles:="AltaPerfil")>
-    Function Create() As ActionResult
+    <Autorizar(Roles:="CrearPerfil")>
+    Function Crear() As ActionResult
         Dim json As String = JsonConvert.SerializeObject(Me.vBLL.ConsultarPermisos())
         ViewBag.ListaPermisos = json
         Return View()
@@ -40,9 +40,9 @@ Public Class PerfilController
 
     '
     ' POST: /Perfil/Create
-    <Autorizar(Roles:="AltaPerfil")>
+    <Autorizar(Roles:="CrearPerfil")>
     <HttpPost()> _
-    Function Create(ByVal p As Perfil) As ActionResult
+    Function Crear(ByVal p As Perfil) As ActionResult
         p.ListaPermisos = JsonConvert.DeserializeObject(Of List(Of Permiso))(Request("ListaPermisos"), New PermisoConverter())
         Dim claveModelState = ModelState("ListaPermisos")
         claveModelState.Errors.Clear()
@@ -62,7 +62,7 @@ Public Class PerfilController
     '
     ' GET: /Perfil/Edit/5
     <Autorizar(Roles:="EditarPerfil")>
-    Function Edit(ByVal id As Integer) As ActionResult
+    Function Editar(ByVal id As Integer) As ActionResult
         Dim vPerfil As EE.Perfil = Me.vBLL.ConsultarPorId(id)
         Dim json As String = JsonConvert.SerializeObject(Me.vBLL.ConsultarPermisos(vPerfil.Id))
         ViewBag.ListaPermisos = json
@@ -73,7 +73,7 @@ Public Class PerfilController
     ' POST: /Perfil/Edit/5
     <Autorizar(Roles:="EditarPerfil")>
     <HttpPost()> _
-    Function Edit(ByVal id As Integer, ByVal p As Perfil) As ActionResult
+    Function Editar(ByVal id As Integer, ByVal p As Perfil) As ActionResult
         p.ListaPermisos = JsonConvert.DeserializeObject(Of List(Of Permiso))(Request("ListaPermisos"), New PermisoConverter())
         Dim listaPermisosModelState = ModelState("ListaPermisos")
         listaPermisosModelState.Errors.Clear()
@@ -87,8 +87,8 @@ Public Class PerfilController
 
     '
     ' GET: /Perfil/Delete/5
-    <Autorizar(Roles:="BajaPerfil")>
-    Function Delete(ByVal id As Integer) As ActionResult
+    <Autorizar(Roles:="EiminarPerfil")>
+    Function Eliminar(ByVal id As Integer) As ActionResult
         If ModelState.IsValid Then
             Me.vBLL.Eliminar(id)
         Else

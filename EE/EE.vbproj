@@ -63,6 +63,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contacto.vb" />
     <Compile Include="Mensaje.vb" />
     <Compile Include="Bitacora.vb" />
     <Compile Include="Familia.vb" />

@@ -94,9 +94,9 @@ End Section
                         <button type="submit" class="btn blue">Grabar</button>
                         @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn default"})
                     </div>
-                End Using
+                         End Using
             </div>
         </div>
         <!-- END SAMPLE FORM PORTLET-->
-    </div>    
+    </div>
 </div>

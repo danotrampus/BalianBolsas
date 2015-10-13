@@ -73,4 +73,15 @@ Public Class RegistrarViewModel
         End Set
     End Property
 
+    Private vAceptar As Boolean
+    <Range(GetType(Boolean), "true", "true", ErrorMessage:="Debe aceptar para continuar")>
+    Public Property Aceptar() As Boolean
+        Get
+            Return vAceptar
+        End Get
+        Set(ByVal value As Boolean)
+            vAceptar = value
+        End Set
+    End Property
+
 End Class

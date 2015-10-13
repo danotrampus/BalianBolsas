@@ -21,6 +21,18 @@ End Section
     <script type="text/javascript">
         $(document).ready(function () {
             $("form").validate();
+            $('#tycLink').click(function (e) {
+                var url = $('#tycLink').attr('href');
+
+                $.get(url, function (data) {
+                    $('#tycContainer').html(data);
+
+                    $('#tycModal').modal('show');
+                });
+
+                e.preventDefault();
+                return false;
+            });
         });
     </script>
 End Section
@@ -76,6 +88,12 @@ End Section
                             @Html.PasswordFor(Function(model) model.ConfirmaClave, New With {.class = "form-control"})
                             @Html.ValidationMessageFor(Function(model) model.ConfirmaClave, Nothing, New With {.class = "help-block"})
                         </div>
+                        <div class="checkbox @IIf(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Aceptar))), Nothing, "has-error")">
+                            <label>
+                                @Html.CheckBoxFor(Function(model) model.Aceptar) Aceptar <a id='tycLink' href="@Url.Action("TerminosCondiciones", "Home")">terminos y condiciones</a>
+                            </label>
+                            @Html.ValidationMessageFor(Function(model) model.Aceptar, Nothing, New With {.class = "help-block"})
+                        </div>
                     </div>
                     @<div class="form-actions">
                         <button type="submit" class="btn blue">Grabar</button>
@@ -85,4 +103,19 @@ End Section
         </div>
         <!-- END SAMPLE FORM PORTLET-->
     </div>
+</div>
+
+<div class="modal fade" id="tycModal" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Términos y Condiciones</h4>
+            </div>
+            <div class="modal-body" id='tycContainer'>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
 </div>

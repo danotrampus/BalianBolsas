@@ -12,12 +12,16 @@
         Return View()
     End Function
 
-    Function Ubicacion() As ActionResult
+    Function Faq() As ActionResult
         Return View()
     End Function
 
-    Function Contacto() As ActionResult
+    Function PoliticaPrivacidad() As ActionResult
         Return View()
+    End Function
+
+    Function TerminosCondiciones() As ActionResult
+        Return PartialView()
     End Function
 
 End Class

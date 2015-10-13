@@ -14,7 +14,7 @@ Public Class ResguardoController
         Return View(Me.vBll.Listar())
     End Function
 
-    <Autorizar(Roles:="AltaResguardo")>
+    <Autorizar(Roles:="CrearResguardo")>
     <HttpPost()>
     Function Crear() As ActionResult
         Dim r As New Resguardo()
@@ -27,7 +27,7 @@ Public Class ResguardoController
         Return RedirectToAction("Index")
     End Function
 
-    <Autorizar(Roles:="BajaResguardo")>
+    <Autorizar(Roles:="EliminarResguardo")>
     <HttpPost()>
     Function Eliminar(ByVal id As Integer) As ActionResult
         If ModelState.IsValid Then

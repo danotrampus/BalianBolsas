@@ -20,15 +20,15 @@ Public Class UsuarioController
     '
     ' GET: /Usuario/Details/5
     <Autorizar(Roles:="ConsultarUsuario")>
-    Function Details(ByVal id As Integer) As ActionResult
+    Function Detalle(ByVal id As Integer) As ActionResult
         Dim vUsuario As Usuario = Me.vBLL.ConsultarPorId(id)
         Return View(vUsuario)
     End Function
 
     '
     ' GET: /Usuario/Create
-    <Autorizar(Roles:="AltaUsuario")>
-    Function Create() As ActionResult
+    <Autorizar(Roles:="CrearUsuario")>
+    Function Crear() As ActionResult
         Dim u As New Usuario()
         Dim PerfilBll As New BLL.PerfilBLL()
         ViewBag.Perfiles = PerfilBll.Listar()
@@ -36,9 +36,9 @@ Public Class UsuarioController
     End Function
 
     ' POST: /Usuario/Create
-    <Autorizar(Roles:="AltaUsuario")>
+    <Autorizar(Roles:="CrearUsuario")>
     <HttpPost()> _
-    Function Create(ByVal u As Usuario) As ActionResult
+    Function Crear(ByVal u As Usuario) As ActionResult
         If ModelState.IsValid Then
             If Me.vBLL.VerificarExistenciaPorEmail(u.Email) = False Then
                 If Me.vBLL.VerificarExistenciaPorNombreUsuario(u.NombreUsuario) = False Then
@@ -61,7 +61,7 @@ Public Class UsuarioController
     '
     ' GET: /Usuario/Edit/5
     <Autorizar(Roles:="EditarUsuario")>
-    Function Edit(ByVal id As Integer) As ActionResult
+    Function Editar(ByVal id As Integer) As ActionResult
         Dim vUsuario As EE.Usuario = Me.vBLL.ConsultarPorId(id)
         Dim PerfilBll As New BLL.PerfilBLL()
         ViewBag.Perfiles = PerfilBll.Listar()
@@ -72,7 +72,7 @@ Public Class UsuarioController
     ' POST: /Usuario/Edit/5
     <Autorizar(Roles:="EditarUsuario")>
     <HttpPost()> _
-    Function Edit(ByVal id As Integer, ByVal u As Usuario) As ActionResult
+    Function Editar(ByVal id As Integer, ByVal u As Usuario) As ActionResult
         Dim claveModelState = ModelState("Clave")
         claveModelState.Errors.Clear()
         If ModelState.IsValid Then
@@ -86,8 +86,8 @@ Public Class UsuarioController
 
     '
     ' GET: /Usuario/Delete/5
-    <Autorizar(Roles:="BajaUsuario")>
-    Function Delete(ByVal id As Integer) As ActionResult
+    <Autorizar(Roles:="EliminarUsuario")>
+    Function Eliminar(ByVal id As Integer) As ActionResult
         If ModelState.IsValid Then
             Me.vBLL.Eliminar(id)
         Else
