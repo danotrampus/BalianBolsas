@@ -15,10 +15,18 @@ End Code
     </ul>
 End Section
 
+<style>
+    h4 {
+        color: rgba(0, 104, 214, 1);
+    }
+</style>
+
 <h1>Preguntas Frecuentes</h1>
 
 <h4>¿Cuál seria la  medida de una bolsa Standard?</h4>
-Fabricamos  bolsas a medida según especificaciones del cliente.
+<p>
+    Fabricamos  bolsas a medida según especificaciones del cliente.
+</p>
 <h4>
     ¿Qué se entiende por bolsas de BD, AD o PP?
 </h4>
