@@ -1,6 +1,8 @@
-﻿Public Class Idioma
+﻿Imports System.ComponentModel.DataAnnotations
+Public Class Idioma
 
     Private vId As Integer
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Idioma")>
     Public Property Id() As Integer
         Get
             Return vId

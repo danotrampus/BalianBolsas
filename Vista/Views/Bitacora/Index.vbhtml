@@ -32,10 +32,7 @@ End Section
         $(document).ready(function () {
             var table = $('#tablaBitacora');
 
-            // begin first table
             table.dataTable({
-                //"sDom": "<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'<'table-group-actions pull-right'>>r>t<'row'<'col-md-8 col-sm-12'pli><'col-md-4 col-sm-12'>>",
-                // Internationalisation. For more info refer to http://datatables.net/manual/i18n
                 "language": {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar _MENU_ registros",
@@ -60,59 +57,12 @@ End Section
                         "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                     }
                 },
-
-                // Or you can use remote translation file
-                //"language": {
-                //   url: '//cdn.datatables.net/plug-ins/3cfcc339e89/i18n/Portuguese.json'
-                //},
-
-                // Uncomment below line("dom" parameter) to fix the dropdown overflow issue in the datatable cells. The default datatable layout
-                // setup uses scrollable div(table-scrollable) with overflow:auto to enable vertical scroll(see: assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js).
-                // So when dropdowns used the scrollable div should be removed.
-                //"dom": "<'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
-
                 "bStateSave": true, // save datatable state(pagination, sort, etc) in cookie.
+            });
 
-                //"columns": [{
-                //    "orderable": false
-                //}, {
-                //    "orderable": true
-                //}, {
-                //    "orderable": false
-                //}, {
-                //    "orderable": false
-                //}, {
-                //    "orderable": true
-                //}, {
-                //    "orderable": false
-                //}],
-                //"lengthMenu": [
-                //    [5, 15, 20, -1],
-                //    [5, 15, 20, "All"] // change per page values here
-                //],
-                //// set the initial value
-                //"pageLength": 5,
-                //"pagingType": "bootstrap_full_number",
-                //"language": {
-                //    "search": "My search: ",
-                //    "lengthMenu": "  _MENU_ records",
-                //    "paginate": {
-                //        "previous": "Prev",
-                //        "next": "Next",
-                //        "last": "Last",
-                //        "first": "First"
-                //    }
-                //},
-                //"columnDefs": [{  // set default column settings
-                //    'orderable': false,
-                //    'targets': [0]
-                //}, {
-                //    "searchable": false,
-                //    "targets": [0]
-                //}],
-                //"order": [
-                //    [1, "asc"]
-                //] // set first column as a default sort by asc
+            $('.date-picker').datepicker({
+                rtl: Metronic.isRTL(),
+                autoclose: true
             });
         });
     </script>
@@ -134,76 +84,74 @@ End Section
                 </div>
             </div>
             <div class="portlet-body">
-                <div class="table-container">
-                    <table class="table table-striped table-bordered table-hover" id="tablaBitacora">
-                        <thead>
-                            <tr role="row" class="heading">
-                                <th width="10%">
-                                    @Html.DisplayNameFor(Function(model) model.FechaHora)
-                                </th>
-                                <th width="10%">
-                                    @Html.DisplayNameFor(Function(model) model.Tipo)
-                                </th>
-                                <th width="70%">
-                                    @Html.DisplayNameFor(Function(model) model.Descripcion)
-                                </th>
-                                <th width="10%">
-                                    @Html.DisplayNameFor(Function(model) model.Usuario.NombreUsuario)
-                                </th>
-                            </tr>
-                            @*<tr role="row" class="filter">
-                                <td>
-                                    <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
-                                        <input type="text" class="form-control form-filter input-sm" readonly name="order_date_from" placeholder="From">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
-                                        </span>
-                                    </div>
-                                    <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
-                                        <input type="text" class="form-control form-filter input-sm" readonly name="order_date_to" placeholder="To">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
-                                        </span>
-                                    </div>
-                                </td>
-                                <td>
-                                    <select name="order_status" class="form-control form-filter input-sm">
-                                        <option value="">Seleccione...</option>
-                                        <option value="Informacion">Información</option>
-                                        <option value="Advertencia">Advertencia</option>
-                                        <option value="Fallo">Fallo</option>
-                                    </select>
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control form-filter input-sm" name="order_id">
-                                </td>
-                                <td>
-                                    <input type="text" class="form-control form-filter input-sm" name="order_customer_name">
-                                </td>
-                            </tr>*@
-                        </thead>
-                        <tbody>
-                            @For Each item In Model
-                                Dim currentItem = item
+                <table class="table table-striped table-bordered table-hover" id="tablaBitacora">
+                    <thead>
+                        <tr role="row" class="filter">
+                            <td>
+                                <div class="input-group date date-picker margin-bottom-5" data-date-format="dd/mm/yyyy">
+                                    <input type="text" class="form-control form-filter input-sm" readonly name="order_date_from" placeholder="From">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                                <div class="input-group date date-picker" data-date-format="dd/mm/yyyy">
+                                    <input type="text" class="form-control form-filter input-sm" readonly name="order_date_to" placeholder="To">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-sm default" type="button"><i class="fa fa-calendar"></i></button>
+                                    </span>
+                                </div>
+                            </td>
+                            <td>
+                                <select name="order_status" class="form-control form-filter input-sm">
+                                    <option value="">Seleccione...</option>
+                                    <option value="Informacion">Información</option>
+                                    <option value="Advertencia">Advertencia</option>
+                                    <option value="Fallo">Fallo</option>
+                                </select>
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-filter input-sm" name="order_id">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control form-filter input-sm" name="order_customer_name">
+                            </td>
+                        </tr>
+                        <tr role="row" class="heading">
+                            <th width="10%">
+                                @Html.DisplayNameFor(Function(model) model.FechaHora)
+                            </th>
+                            <th width="10%">
+                                @Html.DisplayNameFor(Function(model) model.Tipo)
+                            </th>
+                            <th width="70%">
+                                @Html.DisplayNameFor(Function(model) model.Descripcion)
+                            </th>
+                            <th width="10%">
+                                @Html.DisplayNameFor(Function(model) model.Usuario.NombreUsuario)
+                            </th>
+                        </tr>
+                     </thead>
+                    <tbody>
+                        @For Each item In Model
+                            Dim currentItem = item
 
-                                @<tr class="odd gradeX">
-                                    <td>
-                                        @Html.DisplayFor(Function(modelItem) currentItem.FechaHora)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(Function(modelItem) currentItem.Descripcion)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(Function(modelItem) currentItem.Usuario.NombreUsuario)
-                                    </td>
-                                </tr>
-                            Next
-                        </tbody>
-                    </table>
-                </div>
+                            @<tr class="odd gradeX">
+                                <td>
+                                    @Html.DisplayFor(Function(modelItem) currentItem.FechaHora)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(Function(modelItem) currentItem.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(Function(modelItem) currentItem.Usuario.NombreUsuario)
+                                </td>
+                            </tr>
+                        Next
+                    </tbody>
+                </table>
             </div>
         </div>
         <!-- END EXAMPLE TABLE PORTLET-->

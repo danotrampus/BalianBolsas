@@ -40,6 +40,10 @@ Public Class BundleConfig
         bundles.Add(New StyleBundle("~/Content/ztree/css").Include(
             "~/Content/global/plugins/zTree/ztree.css"))
 
+        'Css Summernote
+        bundles.Add(New StyleBundle("~/Content/summernote/css").Include(
+            "~/Content/global/plugins/bootstrap-summernote/summernote.css"))
+
         'Js Global
         bundles.Add(New ScriptBundle("~/Content/global/js").Include(
             "~/Content/global/plugins/jquery.js",
@@ -88,5 +92,10 @@ Public Class BundleConfig
         'Js SignalR
         bundles.Add(New ScriptBundle("~/Content/signalr/js").Include(
             "~/Scripts/jquery.signalR-2.2.0.js"))
+
+        'Js Summernote
+        bundles.Add(New ScriptBundle("~/Content/summernote/js").Include(
+            "~/Content/global/plugins/bootstrap-summernote/summernote.min.js"))
+
     End Sub
 End Class

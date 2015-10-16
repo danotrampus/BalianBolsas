@@ -2,8 +2,8 @@
 Imports System.Configuration
 Public Class Datos
 
-    Private Str As String = "Data Source=.\SQL_UAI;Initial Catalog=BalianBolsas;Integrated Security=True"
-    Private Str2 As String = "Data Source=.\SQL_UAI;Initial Catalog=Master;Integrated Security=True"
+    Private Str As String = "Data Source=.;Initial Catalog=BalianBolsas;Integrated Security=True"
+    Private Str2 As String = "Data Source=.;Initial Catalog=Master;Integrated Security=True"
     'Private Str As String = ConfigurationSettings.AppSettings("DefaultConnection")
 
     Private Cnn As New SqlConnection(Str)

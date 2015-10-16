@@ -182,6 +182,7 @@
     <Compile Include="Chat\UsuarioChatModel.vb" />
     <Compile Include="Controllers\BaseController.vb" />
     <Compile Include="Controllers\ContactoController.vb" />
+    <Compile Include="Controllers\NovedadController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
     <Compile Include="Controllers\BitacoraController.vb" />
     <Compile Include="Controllers\CuentaController.vb" />
@@ -198,6 +199,7 @@
     <Compile Include="Models\CambioClaveViewModel.vb" />
     <Compile Include="Models\IdiomaEditarViewModel.vb" />
     <Compile Include="Models\LogInViewModel.vb" />
+    <Compile Include="Models\NovedadViewModel.vb" />
     <Compile Include="Models\RegistrarViewModel.vb" />
     <Compile Include="Models\UsuarioSerializableModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -4687,6 +4689,10 @@
     <Content Include="Views\Home\Faq.vbhtml" />
     <Content Include="Views\Home\PoliticaPrivacidad.vbhtml" />
     <Content Include="Views\Home\TerminosCondiciones.vbhtml" />
+    <Content Include="Views\Idioma\Crear.vbhtml" />
+    <Content Include="Views\Idioma\Index.vbhtml" />
+    <Content Include="Views\Novedad\Index.vbhtml" />
+    <Content Include="Views\Novedad\Crear.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

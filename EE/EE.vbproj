@@ -63,11 +63,13 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categoria.vb" />
     <Compile Include="Contacto.vb" />
     <Compile Include="Mensaje.vb" />
     <Compile Include="Bitacora.vb" />
     <Compile Include="Familia.vb" />
     <Compile Include="Idioma.vb" />
+    <Compile Include="Novedad.vb" />
     <Compile Include="Patente.vb" />
     <Compile Include="Perfil.vb" />
     <Compile Include="Permiso.vb" />

@@ -62,7 +62,9 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoriaMapper.vb" />
     <Compile Include="ContactoMapper.vb" />
+    <Compile Include="NovedadMapper.vb" />
     <Compile Include="ResguardoMapper.vb" />
     <Compile Include="MensajeMapper.vb" />
     <Compile Include="BitacoraMapper.vb" />
