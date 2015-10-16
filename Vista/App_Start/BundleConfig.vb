@@ -61,8 +61,7 @@ Public Class BundleConfig
         'Js Theme
         bundles.Add(New ScriptBundle("~/Content/theme/js").Include(
             "~/Content/global/scripts/metronic.js",
-            "~/Content/admin/layout/scripts/layout.js",
-            "~/Content/admin/layout/scripts/quick-sidebar.js"))
+            "~/Content/admin/layout/scripts/layout.js"))
 
         'Js Login
         bundles.Add(New ScriptBundle("~/Content/login/js").Include(
@@ -91,7 +90,8 @@ Public Class BundleConfig
 
         'Js SignalR
         bundles.Add(New ScriptBundle("~/Content/signalr/js").Include(
-            "~/Scripts/jquery.signalR-2.2.0.js"))
+            "~/Scripts/jquery.signalR-2.2.0.js",
+            "~/Content/admin/layout/scripts/quick-sidebar.js"))
 
         'Js Summernote
         bundles.Add(New ScriptBundle("~/Content/summernote/js").Include(

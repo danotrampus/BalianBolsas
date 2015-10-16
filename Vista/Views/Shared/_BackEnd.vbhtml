@@ -124,11 +124,17 @@ End Code
                             <!-- END USER LOGIN DROPDOWN -->
                             <!-- BEGIN QUICK SIDEBAR TOGGLER -->
                             <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                            @Code
+                                If User IsNot Nothing Then
+                            End Code
                             <li class="dropdown dropdown-quick-sidebar-toggler">
                                 <a href="javascript:;" class="dropdown-toggle">
                                     <i class="icon-logout"></i>
                                 </a>
                             </li>
+                            @Code
+                                End If
+                            End Code
                             <!-- END QUICK SIDEBAR TOGGLER -->
                         </ul>
                     </div>
@@ -211,36 +217,40 @@ End Code
         </div>
         <!-- END CONTENT -->
         <!-- BEGIN QUICK SIDEBAR -->
-        <a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
-        <div class="page-quick-sidebar-wrapper">
-            <div class="page-quick-sidebar">
-                <div class="nav-justified">
-                    <ul class="nav nav-tabs nav-justified">
-                        <li class="active">
-                            <a href="#quick_sidebar_tab_1" data-toggle="tab">
-                                Chat @*<span class="badge badge-danger">2</span>*@
-                            </a>
-                        </li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
-                            <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
-                                <h3 class="list-heading">Usuarios Conectados</h3>
-                                <ul id="ulOnlineUsers" class="media-list list-items">
-                                </ul>
-                            </div>
-                            <div class="page-quick-sidebar-item" data-nombregrupo="" data-usuarioid="">
-                                <div class="page-quick-sidebar-chat-user">
-                                    <div class="page-quick-sidebar-nav">
-                                        <a href="javascript:;" class="page-quick-sidebar-back-to-list"><i class="icon-arrow-left"></i>Atras</a>
-                                    </div>
-                                    <div class="page-quick-sidebar-chat-user-messages">
-                                    </div>
-                                    <div class="page-quick-sidebar-chat-user-form">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Ingrese un mensaje...">
-                                            <div class="input-group-btn">
-                                                <button type="button" class="btn blue"><i class="icon-arrow-right"></i></button>
+        @Code
+            If User IsNot Nothing Then
+        End Code
+            <a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
+            <div class="page-quick-sidebar-wrapper">
+                <div class="page-quick-sidebar">
+                    <div class="nav-justified">
+                        <ul class="nav nav-tabs nav-justified">
+                            <li class="active">
+                                <a href="#quick_sidebar_tab_1" data-toggle="tab">
+                                    Chat @*<span class="badge badge-danger">2</span>*@
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
+                                <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
+                                    <h3 class="list-heading">Usuarios Conectados</h3>
+                                    <ul id="ulOnlineUsers" class="media-list list-items">
+                                    </ul>
+                                </div>
+                                <div class="page-quick-sidebar-item" data-nombregrupo="" data-usuarioid="">
+                                    <div class="page-quick-sidebar-chat-user">
+                                        <div class="page-quick-sidebar-nav">
+                                            <a href="javascript:;" class="page-quick-sidebar-back-to-list"><i class="icon-arrow-left"></i>Atras</a>
+                                        </div>
+                                        <div class="page-quick-sidebar-chat-user-messages">
+                                        </div>
+                                        <div class="page-quick-sidebar-chat-user-form">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" placeholder="Ingrese un mensaje...">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn blue"><i class="icon-arrow-right"></i></button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -250,7 +260,9 @@ End Code
                     </div>
                 </div>
             </div>
-        </div>
+        @Code
+            End If
+        End Code
         <!-- END QUICK SIDEBAR -->
     </div>
     <!-- END CONTAINER -->
@@ -272,8 +284,14 @@ End Code
     @RenderSection("javascripts", required:=False)
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
-    @Scripts.Render("~/Content/signalr/js")
-    <script src="/signalr/hubs" type="text/javascript"></script>
+    @Code
+        If User IsNot Nothing Then
+    End Code
+        @Scripts.Render("~/Content/signalr/js")
+        <script src="/signalr/hubs" type="text/javascript"></script>
+    @Code
+        End If
+    End Code
     @Scripts.Render("~/Content/theme/js")
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
