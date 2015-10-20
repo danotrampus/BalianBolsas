@@ -2,9 +2,8 @@
 Imports System.Configuration
 Public Class Datos
 
-    Private Str As String = "Data Source=.;Initial Catalog=BalianBolsas;Integrated Security=True"
-    Private Str2 As String = "Data Source=.;Initial Catalog=Master;Integrated Security=True"
-    'Private Str As String = ConfigurationSettings.AppSettings("DefaultConnection")
+    Private Str As String = ConfigurationManager.ConnectionStrings("DefaultConnection").ConnectionString
+    Private Str2 As String = ConfigurationManager.ConnectionStrings("MasterConnection").ConnectionString
 
     Private Cnn As New SqlConnection(Str)
     Private CnnMaster As New SqlConnection(Str2)

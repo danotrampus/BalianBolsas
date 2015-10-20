@@ -90,12 +90,15 @@ Public Class BundleConfig
 
         'Js SignalR
         bundles.Add(New ScriptBundle("~/Content/signalr/js").Include(
-            "~/Scripts/jquery.signalR-2.2.0.js",
+            "~/Scripts/jquery.signalR-2.2.0.js"))
+
+        'Js Chat
+        bundles.Add(New ScriptBundle("~/Content/chat/js").Include(
             "~/Content/admin/layout/scripts/quick-sidebar.js"))
 
         'Js Summernote
         bundles.Add(New ScriptBundle("~/Content/summernote/js").Include(
-            "~/Content/global/plugins/bootstrap-summernote/summernote.min.js"))
+            "~/Content/global/plugins/bootstrap-summernote/summernote.js"))
 
     End Sub
 End Class

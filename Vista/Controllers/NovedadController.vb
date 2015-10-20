@@ -17,7 +17,7 @@ Public Class NovedadController
     End Function
 
     <Autorizar(Roles:="ConsultarNovedad")>
-    Function Detalles(ByVal id As Integer) As ActionResult
+    Function Detalle(ByVal id As Integer) As ActionResult
         Dim vNovedad As EE.Novedad = Me.vBLL.ConsultarPorId(id)
         Return View(vNovedad)
     End Function

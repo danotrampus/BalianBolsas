@@ -36,7 +36,7 @@ End Code
 <!-- DOC: Apply "page-footer-fixed" class to the body element to have fixed footer -->
 <!-- DOC: Apply "page-sidebar-reversed" class to put the sidebar on the right side -->
 <!-- DOC: Apply "page-full-width" class to the body element to have full width page without the sidebar menu -->
-<body class="page-md page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo ">
+<body class="page-md page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid">
     <!-- BEGIN HEADER -->
     <div class="page-header md-shadow-z-1-i navbar navbar-fixed-top">
         <!-- BEGIN HEADER INNER -->
@@ -67,81 +67,86 @@ End Code
                             Preguntas Frecuentes
                         </a>
                     </li>
+                    <li class="classic-menu-dropdown">
+                        <a href="@Url.Action("ListarNovedades", "Novedad")">
+                            Novedades
+                        </a>
+                    </li>
                 </ul>
             </div>
-                    <!-- END LOGO -->
-                    <!-- BEGIN RESPONSIVE MENU TOGGLER -->
-                    <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-                    </a>
-                    <!-- END RESPONSIVE MENU TOGGLER -->
-                    <!-- BEGIN TOP NAVIGATION MENU -->
-                    <div class="top-menu">
-                        <ul class="nav navbar-nav pull-right">
-                            <!-- BEGIN LANGUAGE BAR -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            @Html.DropdownLenguaje()
-                            <!-- END LANGUAGE BAR -->
-                            <!-- BEGIN USER LOGIN DROPDOWN -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            @Code
-                                If IsNothing(User) Then
-                                @<li>
-                                    <a href="@Url.Action("Registrar", "Usuario")" class="btn btn-default btn-sm" style="margin-right: 5px; margin-top: 7px;">
-                                        Registrarse
+            <!-- END LOGO -->
+            <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+            </a>
+            <!-- END RESPONSIVE MENU TOGGLER -->
+            <!-- BEGIN TOP NAVIGATION MENU -->
+            <div class="top-menu">
+                <ul class="nav navbar-nav pull-right">
+                    <!-- BEGIN LANGUAGE BAR -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    @Html.DropdownLenguaje()
+                    <!-- END LANGUAGE BAR -->
+                    <!-- BEGIN USER LOGIN DROPDOWN -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    @Code
+                        If IsNothing(User) Then
+                        @<li>
+                            <a href="@Url.Action("Registrar", "Usuario")" class="btn btn-default btn-sm" style="margin-right: 5px; margin-top: 7px;">
+                                Registrarse
+                            </a>
+                        </li>
+                        @<li>
+                            <a href="@Url.Action("LogIn", "Cuenta")" class="btn btn-default btn-sm" style="margin-top: 7px;">
+                                Iniciar Sesión
+                            </a>
+                        </li>
+                        Else
+                        @<li class="dropdown dropdown-user" data-usuarioid="@User.UsuarioId">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                <img alt="" class="img-circle" src="~/Content/admin/layout/img/avatar.png" />
+                                <span class="username username-hide-on-mobile">
+                                    @User.Nombre
+                                </span>
+                                <i class="fa fa-angle-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="@Url.Action("MiCuenta", "Usuario")">
+                                        <i class="icon-user"></i> Mi Cuenta
                                     </a>
                                 </li>
-                                @<li>
-                                     <a href="@Url.Action("LogIn", "Cuenta")" class="btn btn-default btn-sm" style="margin-top: 7px;">
-                                         Iniciar Sesión
-                                     </a>
+                                <li class="divider">
                                 </li>
-                                Else
-                                @<li class="dropdown dropdown-user" data-usuarioid="@User.UsuarioId">
-                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                                        <img alt="" class="img-circle" src="~/Content/admin/layout/img/avatar.png" />
-                                        <span class="username username-hide-on-mobile">
-                                            @User.Nombre
-                                        </span>
-                                        <i class="fa fa-angle-down"></i>
+                                <li>
+                                    <a href="@Url.Action("LogOut", "Cuenta")">
+                                        <i class="icon-key"></i> Log Out
                                     </a>
-                                    <ul class="dropdown-menu dropdown-menu-default">
-                                        <li>
-                                            <a href="@Url.Action("MiCuenta", "Usuario")">
-                                                <i class="icon-user"></i> Mi Cuenta
-                                            </a>
-                                        </li>
-                                        <li class="divider">
-                                        </li>
-                                        <li>
-                                            <a href="@Url.Action("LogOut", "Cuenta")">
-                                                <i class="icon-key"></i> Log Out
-                                            </a>
-                                        </li>
-                                    </ul>
                                 </li>
-                                End If
-                            End Code
-                            <!-- END USER LOGIN DROPDOWN -->
-                            <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                            <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                            @Code
-                                If User IsNot Nothing Then
-                            End Code
-                            <li class="dropdown dropdown-quick-sidebar-toggler">
-                                <a href="javascript:;" class="dropdown-toggle">
-                                    <i class="icon-logout"></i>
-                                </a>
-                            </li>
-                            @Code
-                                End If
-                            End Code
-                            <!-- END QUICK SIDEBAR TOGGLER -->
-                        </ul>
-                    </div>
-                    <!-- END TOP NAVIGATION MENU -->
+                            </ul>
+                        </li>
+                        End If
+                    End Code
+                    <!-- END USER LOGIN DROPDOWN -->
+                    <!-- BEGIN QUICK SIDEBAR TOGGLER -->
+                    <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+                    @Code
+                        If User IsNot Nothing Then
+                    End Code
+                    <li class="dropdown dropdown-quick-sidebar-toggler">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <i class="icon-logout"></i>
+                        </a>
+                    </li>
+                    @Code
+                        End If
+                    End Code
+                    <!-- END QUICK SIDEBAR TOGGLER -->
+                </ul>
             </div>
-            <!-- END HEADER INNER -->
+            <!-- END TOP NAVIGATION MENU -->
         </div>
+        <!-- END HEADER INNER -->
+    </div>
     <!-- END HEADER -->
     <div class="clearfix">
     </div>
@@ -205,10 +210,9 @@ End Code
         <div class="page-content-wrapper">
             <div class="page-content">
                 <!-- BEGIN PAGE HEADER-->
-               
                 @RenderSection("title", required:=False)
-                
-                <div class="page-bar">
+
+                <div class="page-bar" style="margin-bottom: 25px !important;">
                     @RenderSection("breadcrumbs", required:=True)
                 </div>
                 <!-- END PAGE HEADER-->
@@ -220,37 +224,35 @@ End Code
         @Code
             If User IsNot Nothing Then
         End Code
-            <a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
-            <div class="page-quick-sidebar-wrapper">
-                <div class="page-quick-sidebar">
-                    <div class="nav-justified">
-                        <ul class="nav nav-tabs nav-justified">
-                            <li class="active">
-                                <a href="#quick_sidebar_tab_1" data-toggle="tab">
-                                    Chat @*<span class="badge badge-danger">2</span>*@
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
-                                <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
-                                    <h3 class="list-heading">Usuarios Conectados</h3>
-                                    <ul id="ulOnlineUsers" class="media-list list-items">
-                                    </ul>
-                                </div>
-                                <div class="page-quick-sidebar-item" data-nombregrupo="" data-usuarioid="">
-                                    <div class="page-quick-sidebar-chat-user">
-                                        <div class="page-quick-sidebar-nav">
-                                            <a href="javascript:;" class="page-quick-sidebar-back-to-list"><i class="icon-arrow-left"></i>Atras</a>
-                                        </div>
-                                        <div class="page-quick-sidebar-chat-user-messages">
-                                        </div>
-                                        <div class="page-quick-sidebar-chat-user-form">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Ingrese un mensaje...">
-                                                <div class="input-group-btn">
-                                                    <button type="button" class="btn blue"><i class="icon-arrow-right"></i></button>
-                                                </div>
+        <a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
+        <div class="page-quick-sidebar-wrapper">
+            <div class="page-quick-sidebar">
+                <div class="nav-justified">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active">
+                            <a href="#quick_sidebar_tab_1" data-toggle="tab">
+                                Chat @*<span class="badge badge-danger">2</span>*@
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active page-quick-sidebar-chat" id="quick_sidebar_tab_1">
+                            <div class="page-quick-sidebar-chat-users" data-rail-color="#ddd" data-wrapper-class="page-quick-sidebar-list">
+                                <h3 class="list-heading">Usuarios Conectados</h3>
+                                <ul id="ulOnlineUsers" class="media-list list-items"></ul>
+                            </div>
+                            <div class="page-quick-sidebar-item" data-nombregrupo="" data-usuarioid="">
+                                <div class="page-quick-sidebar-chat-user">
+                                    <div class="page-quick-sidebar-nav">
+                                        <a href="javascript:;" class="page-quick-sidebar-back-to-list"><i class="icon-arrow-left"></i>Atras</a>
+                                    </div>
+                                    <div class="page-quick-sidebar-chat-user-messages">
+                                    </div>
+                                    <div class="page-quick-sidebar-chat-user-form">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Ingrese un mensaje...">
+                                            <div class="input-group-btn">
+                                                <button type="button" class="btn blue"><i class="icon-arrow-right"></i></button>
                                             </div>
                                         </div>
                                     </div>
@@ -260,6 +262,7 @@ End Code
                     </div>
                 </div>
             </div>
+        </div>
         @Code
             End If
         End Code
@@ -284,24 +287,25 @@ End Code
     @RenderSection("javascripts", required:=False)
     <!-- END PAGE LEVEL PLUGINS -->
     <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    @Scripts.Render("~/Content/theme/js")
     @Code
         If User IsNot Nothing Then
     End Code
-        @Scripts.Render("~/Content/signalr/js")
-        <script src="/signalr/hubs" type="text/javascript"></script>
+    @Scripts.Render("~/Content/signalr/js")
+    <script src="/signalr/hubs" type="text/javascript"></script>
+    @Scripts.Render("~/Content/chat/js")
     @Code
         End If
     End Code
-    @Scripts.Render("~/Content/theme/js")
     <!-- END PAGE LEVEL SCRIPTS -->
     <script>
-        jQuery(document).ready(function() {
+        jQuery(document).ready(function () {
             Metronic.init(); // init metronic core componets
             Layout.init(); // init layout
             @Code
                 If User IsNot Nothing Then
             End Code
-                    QuickSidebar.init(); // init quick sidebar
+            QuickSidebar.init(); // init quick sidebar
             @Code
                 End If
             End Code
@@ -345,5 +349,6 @@ End Code
     @RenderSection("javascript_codigo", required:=False)
     <!-- END JAVASCRIPTS -->
 </body>
+
 <!-- END BODY -->
 </html>

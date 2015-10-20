@@ -69,7 +69,9 @@
     <Compile Include="Bitacora.vb" />
     <Compile Include="Familia.vb" />
     <Compile Include="Idioma.vb" />
+    <Compile Include="Encuesta.vb" />
     <Compile Include="Novedad.vb" />
+    <Compile Include="Opcion.vb" />
     <Compile Include="Patente.vb" />
     <Compile Include="Perfil.vb" />
     <Compile Include="Permiso.vb" />

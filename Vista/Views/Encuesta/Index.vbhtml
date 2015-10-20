@@ -1,4 +1,4 @@
-﻿@ModelType IEnumerable(Of EE.Novedad)
+﻿@ModelType IEnumerable(Of EE.Encuesta)
 
 @Code
     Layout = "~/Views/Shared/_BackEnd.vbhtml"
@@ -12,7 +12,7 @@ End Code
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="#">Novedades</a>
+            <a href="#">Encuestas</a>
         </li>
     </ul>
 End Section
@@ -30,7 +30,7 @@ End Section
 @Section javascript_codigo
     <script type="text/javascript">
         $(document).ready(function () {
-            var table = $('#tablaNovedades');
+            var table = $('#tablaEncuestas');
 
             table.dataTable({
                 "language": {
@@ -69,7 +69,7 @@ End Section
         <div class="portlet box grey-cascade">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-rss"></i>Listado de Novedades
+                    <i class="fa fa-rss"></i>Listado de Encuestas
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse">
@@ -83,24 +83,23 @@ End Section
                     <div class="row">
                         <div class="col-md-6">
                             @Code
-                                If User.IsInRole("CrearNovedad") Then
-                                @<div class="btn-group">
-                                    <a href="@Url.Action("Crear")" class="btn green">
-                                        Nuevo <i class="fa fa-plus"></i>
-                                    </a>
-                                </div>
+                                If User.IsInRole("CrearEncuesta") Then
+                            @<div class="btn-group">
+                                <a href="@Url.Action("Crear")" class="btn green">
+                                    Nuevo <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
                                 End If
                             End Code
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped table-bordered table-hover" id="tablaNovedades">
+                <table class="table table-striped table-bordered table-hover" id="tablaEncuestas">
                     <thead>
                         <tr>
-                            <th>Fecha Creación</th>
+                            <th>Fecha Vigencia</th>
                             <th>Tipo</th>
-                            <th>Título</th>
-                            <th>Categoría</th>
+                            <th>Pregunta</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -110,21 +109,18 @@ End Section
 
                             @<tr class="odd gradeX">
                                 <td>
-                                    @Html.DisplayFor(Function(modelItem) currentItem.FechaCreacion)
+                                    @Html.DisplayFor(Function(modelItem) currentItem.FechaVigencia)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(Function(modelItem) currentItem.Titulo)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(Function(modelItem) currentItem.Categoria.Nombre)
+                                    @Html.DisplayFor(Function(modelItem) currentItem.Pregunta)
                                 </td>
                                 <td class="text-center">
                                     @Code
-                                    If User.IsInRole("ConsultarNovedad") Then
-                                    @Html.ActionLink("Ver", "Detalle", New With {.id = currentItem.Id}, New With {.class = "btn default btn-xs"})
+                                    If User.IsInRole("ConsultarEncuesta") Then
+                                        @Html.ActionLink("Ver", "Detalle", New With {.id = currentItem.Id}, New With {.class = "btn default btn-xs"})
                                     End If
                                     End Code
                                 </td>

@@ -182,6 +182,7 @@
     <Compile Include="Chat\UsuarioChatModel.vb" />
     <Compile Include="Controllers\BaseController.vb" />
     <Compile Include="Controllers\ContactoController.vb" />
+    <Compile Include="Controllers\EncuestaController.vb" />
     <Compile Include="Controllers\NovedadController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
     <Compile Include="Controllers\BitacoraController.vb" />
@@ -4693,9 +4694,16 @@
     <Content Include="Views\Idioma\Index.vbhtml" />
     <Content Include="Views\Novedad\Index.vbhtml" />
     <Content Include="Views\Novedad\Crear.vbhtml" />
+    <Content Include="Views\Novedad\Detalle.vbhtml" />
+    <Content Include="Views\Novedad\Editar.vbhtml" />
+    <Content Include="Views\Novedad\ListarNovedades.vbhtml" />
+    <Content Include="Views\Encuesta\Index.vbhtml" />
+    <Content Include="Views\Encuesta\Crear.vbhtml" />
+    <Content Include="Views\Encuesta\Partial1.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <Content Include="Resguardos\Resguardo %2820-10-2015 19.16.25%29.bak" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -4727,7 +4735,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
-    <Folder Include="Resguardos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.vbproj">

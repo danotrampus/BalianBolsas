@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="CategoriaBLL.vb" />
     <Compile Include="ContactoBLL.vb" />
+    <Compile Include="EncuestaBLL.vb" />
     <Compile Include="NovedadBLL.vb" />
     <Compile Include="ResguardoBLL.vb" />
     <Compile Include="MensajeBLL.vb" />

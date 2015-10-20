@@ -16,7 +16,7 @@ End Code
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="#">Crear</a>
+            <a href="#">Editar</a>
         </li>
     </ul>
 End Section
@@ -60,7 +60,7 @@ End Section
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-rss"></i> Nueva Novedad
+                    <i class="fa fa-rss"></i> Editar Novedad
                 </div>
                 <div class="tools">
                     <a href="" class="collapse">
@@ -70,10 +70,12 @@ End Section
                 </div>
             </div>
             <div class="portlet-body form">
-                @Using Html.BeginForm("Crear", "Novedad", Nothing, FormMethod.Post, New With {.id = "formNovedad"})
+                @Using Html.BeginForm("Editar", "Novedad", Nothing, FormMethod.Post, New With {.id = "formNovedad"})
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(True)
-
+                    
+                    @Html.HiddenFor(Function(model) model.Id)
+                    
                     @<div class="form-body">
                         <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Tipo))), Nothing, "has-error"))">
                             @Html.LabelFor(Function(model) model.Tipo, New With {.class = "control-label"})
