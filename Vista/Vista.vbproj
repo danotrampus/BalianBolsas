@@ -198,6 +198,7 @@
     <Compile Include="Helpers\DropdownLenguajeExtensions.vb" />
     <Compile Include="Helpers\MenuVerticalExtensions.vb" />
     <Compile Include="Models\CambioClaveViewModel.vb" />
+    <Compile Include="Models\FloatChartSerializableModel.vb" />
     <Compile Include="Models\IdiomaEditarViewModel.vb" />
     <Compile Include="Models\LogInViewModel.vb" />
     <Compile Include="Models\NovedadViewModel.vb" />
@@ -4699,7 +4700,9 @@
     <Content Include="Views\Novedad\ListarNovedades.vbhtml" />
     <Content Include="Views\Encuesta\Index.vbhtml" />
     <Content Include="Views\Encuesta\Crear.vbhtml" />
-    <Content Include="Views\Encuesta\Partial1.vbhtml" />
+    <Content Include="Views\Encuesta\Detalle.vbhtml" />
+    <Content Include="Views\Encuesta\Editar.vbhtml" />
+    <Content Include="Views\Encuesta\Responder.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

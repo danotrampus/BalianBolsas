@@ -29,4 +29,12 @@ Public Class EncuestaBLL
         Return vMapper.ConsultarPorId(id)
     End Function
 
+    Public Function ConsultarRandomPorTipo(ByVal tipo As String) As Encuesta
+        Return vMapper.ConsultarRandomPorTipo(tipo)
+    End Function
+
+    Public Function Responer(ByVal opcionId As Integer) As Boolean
+        Return vMapper.Responder(opcionId)
+    End Function
+
 End Class

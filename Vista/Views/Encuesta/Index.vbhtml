@@ -69,7 +69,7 @@ End Section
         <div class="portlet box grey-cascade">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-rss"></i>Listado de Encuestas
+                    <i class="fa fa-question"></i>Listado de Encuestas
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse">

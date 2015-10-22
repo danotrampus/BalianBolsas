@@ -44,6 +44,10 @@ Public Class BundleConfig
         bundles.Add(New StyleBundle("~/Content/summernote/css").Include(
             "~/Content/global/plugins/bootstrap-summernote/summernote.css"))
 
+        'Css DatePicker
+        bundles.Add(New StyleBundle("~/Content/datepicker/css").Include(
+            "~/Content/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css"))
+
         'Js Global
         bundles.Add(New ScriptBundle("~/Content/global/js").Include(
             "~/Content/global/plugins/jquery.js",
@@ -100,5 +104,17 @@ Public Class BundleConfig
         bundles.Add(New ScriptBundle("~/Content/summernote/js").Include(
             "~/Content/global/plugins/bootstrap-summernote/summernote.js"))
 
+        'Js Summernote
+        bundles.Add(New ScriptBundle("~/Content/datepicker/js").Include(
+            "~/Content/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"))
+
+        'Js FlotChart
+        bundles.Add(New ScriptBundle("~/Content/flotchart/js").Include(
+            "~/Content/global/plugins/flot/jquery.flot.js",
+            "~/Content/global/plugins/flot/jquery.flot.resize.js",
+            "~/Content/global/plugins/flot/jquery.flot.pie.js",
+            "~/Content/global/plugins/flot/jquery.flot.stack.js",
+            "~/Content/global/plugins/flot/jquery.flot.crosshair.js",
+            "~/Content/global/plugins/flot/jquery.flot.categories.js"))
     End Sub
 End Class

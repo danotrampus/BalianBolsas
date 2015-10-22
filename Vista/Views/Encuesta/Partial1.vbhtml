@@ -1,2 +1,0 @@
-﻿@ModelType EE.Opcion
-

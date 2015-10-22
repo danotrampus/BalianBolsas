@@ -106,7 +106,8 @@ End Section
                 @Using Html.BeginForm()
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(True)
-
+                    
+                    @Html.HiddenFor(Function(model) model.Id)
                     @<div class="form-body">
                         <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Tipo))), Nothing, "has-error"))">
                             @Html.LabelFor(Function(model) model.Tipo, New With {.class = "control-label"})
