@@ -30,7 +30,7 @@
                     @<br />
                 Next
                 @<br />
-                @<button type="submit" class="btn blue">Votar</button>
+                @<button type="submit" class="btn blue" id="btnResponderEncuesta" disabled>Votar</button>
             End Using
         End Code
     </div>

@@ -24,4 +24,8 @@
         Return PartialView()
     End Function
 
+    Function PaginaNoEncontrada() As ActionResult
+        Return View()
+    End Function
+
 End Class

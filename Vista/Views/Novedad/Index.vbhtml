@@ -65,6 +65,14 @@ End Section
 
 <div class="row">
     <div class="col-md-12">
+        @code
+            If TempData.ContainsKey("Info") Then
+            @<div class="alert alert-success" role="alert">
+                <button class="close" data-dismiss="alert"></button>
+                <strong>Éxito: </strong>@TempData("Info")
+            </div>
+            End If
+        End Code
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
         <div class="portlet box grey-cascade">
             <div class="portlet-title">
@@ -84,11 +92,11 @@ End Section
                         <div class="col-md-6">
                             @Code
                                 If User.IsInRole("CrearNovedad") Then
-                                @<div class="btn-group">
-                                    <a href="@Url.Action("Crear")" class="btn green">
-                                        Nuevo <i class="fa fa-plus"></i>
-                                    </a>
-                                </div>
+                            @<div class="btn-group">
+                                <a href="@Url.Action("Crear")" class="btn green">
+                                    Nuevo <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
                                 End If
                             End Code
                         </div>
@@ -123,8 +131,11 @@ End Section
                                 </td>
                                 <td class="text-center">
                                     @Code
+                                    If currentItem.Tipo = "Noticia" And User.IsInRole("EnviarNovedad") Then
+                                        @Html.ActionLink("Enviar", "Enviar", New With {.id = currentItem.Id}, New With {.class = "btn blue btn-xs"})
+                                    End If
                                     If User.IsInRole("ConsultarNovedad") Then
-                                    @Html.ActionLink("Ver", "Detalle", New With {.id = currentItem.Id}, New With {.class = "btn default btn-xs"})
+                                        @Html.ActionLink("Ver", "Detalle", New With {.id = currentItem.Id}, New With {.class = "btn default btn-xs"})
                                     End If
                                     End Code
                                 </td>

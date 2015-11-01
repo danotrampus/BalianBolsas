@@ -192,17 +192,20 @@
     <Compile Include="Controllers\IdiomaController.vb" />
     <Compile Include="Controllers\UsuarioController.vb" />
     <Compile Include="Converters\PermisoConverter.vb" />
+    <Compile Include="ErrorHandler\CustomErrorHandlerAttribute.vb" />
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\DropdownLenguajeExtensions.vb" />
     <Compile Include="Helpers\MenuVerticalExtensions.vb" />
+    <Compile Include="Models\BitacoraListAjaxViewModel.vb" />
     <Compile Include="Models\CambioClaveViewModel.vb" />
     <Compile Include="Models\FloatChartSerializableModel.vb" />
     <Compile Include="Models\IdiomaEditarViewModel.vb" />
     <Compile Include="Models\LogInViewModel.vb" />
     <Compile Include="Models\NovedadViewModel.vb" />
     <Compile Include="Models\RegistrarViewModel.vb" />
+    <Compile Include="Models\SuscribirseViewModel.vb" />
     <Compile Include="Models\UsuarioSerializableModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -4703,6 +4706,8 @@
     <Content Include="Views\Encuesta\Detalle.vbhtml" />
     <Content Include="Views\Encuesta\Editar.vbhtml" />
     <Content Include="Views\Encuesta\Responder.vbhtml" />
+    <Content Include="Views\Novedad\Suscribirse.vbhtml" />
+    <Content Include="Views\Home\PaginaNoEncontrada.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -4747,6 +4752,10 @@
     <ProjectReference Include="..\EE\EE.vbproj">
       <Project>{e6d79cb0-a243-4f9f-ab6c-b732b605202e}</Project>
       <Name>EE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Servicios\Servicios.vbproj">
+      <Project>{4572e0f4-506e-4644-a780-85a91cce771d}</Project>
+      <Name>Servicios</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

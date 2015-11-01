@@ -96,4 +96,38 @@ Public Class NovedadController
         Return View(vLista)
     End Function
 
+    Public Function Suscribirse() As PartialViewResult
+        Dim vBLLCat As New CategoriaBLL
+        ViewBag.Categorias = vBLLCat.Listar()
+        Return PartialView()
+    End Function
+
+    <HttpPost()>
+    Function Suscribirse(ByVal s As SuscribirseViewModel) As PartialViewResult
+        Dim vBLLCat As New CategoriaBLL
+        ViewBag.Categorias = vBLLCat.Listar()
+
+        If ModelState.IsValid Then
+            Dim suscriptor As New Suscriptor
+            suscriptor.Email = s.Email
+            For Each id As Integer In s.ListaCategoriasSeleccionadas
+                Dim c As New Categoria
+                c.Id = id
+                suscriptor.ListaCategorias.Add(c)
+            Next
+            Me.vBLL.Suscribirse(suscriptor)
+            ModelState.Clear()
+            TempData("Info") = "Se ha suscripto con éxito."
+            Return PartialView(New SuscribirseViewModel)
+        End If
+
+        Return PartialView(s)
+    End Function
+
+    <Autorizar(Roles:="EnviarNovedad")>
+    Public Function Enviar(ByVal id As Integer) As ActionResult
+        Me.vBLL.Enviar(id)
+        TempData("Info") = "Se ha enviado la noticia a los suscriptores."
+        Return RedirectToAction("Index")
+    End Function
 End Class

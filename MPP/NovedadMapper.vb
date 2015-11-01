@@ -64,7 +64,7 @@ Public Class NovedadMapper
     Public Function ListarNovedades() As List(Of Novedad)
         Dim ds As New DataSet
         Dim lista As New List(Of Novedad)
-        ds = vDatos.Leer("SP_Novedad_Listar", Nothing)
+        ds = vDatos.Leer("SP_Novedad_Listar2", Nothing)
 
         If ds.Tables(0).Rows.Count > 0 Then
             For Each Item As DataRow In ds.Tables(0).Rows
@@ -105,6 +105,37 @@ Public Class NovedadMapper
         Else
             Return Nothing
         End If
+    End Function
+
+    Public Function Suscribirse(ByVal s As Suscriptor) As Boolean
+        Dim parametros As New Hashtable
+
+        parametros.Add("@Email", s.Email)
+        Dim dt As New DataTable()
+        dt.Columns.Add("Valor")
+        For Each c As Categoria In s.ListaCategorias
+            dt.Rows.Add(c.Id)
+        Next
+        parametros.Add("@Categorias", dt)
+
+        Return vDatos.Escribir("SP_Novedad_Suscribir", parametros)
+    End Function
+
+    Public Function ConsultarEmailsPorCategoria(ByVal categoriaId As Integer) As List(Of String)
+        Dim ds As New DataSet
+        Dim lista As New List(Of String)
+        Dim parametros As New Hashtable
+
+        parametros.Add("@CategoriaId", categoriaId)
+        ds = vDatos.Leer("SP_Novedad_ConsultarEmailsPorCategoria", parametros)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            For Each Item As DataRow In ds.Tables(0).Rows
+                lista.Add(Item("Email"))
+            Next
+        End If
+
+        Return lista
     End Function
 
 End Class

@@ -73,7 +73,7 @@ Public Class Datos
                 Tranx.Rollback()
             End If
 
-            Return False
+            Throw New Exception(ex.Message)
         Finally
             Cnn.Close()
         End Try

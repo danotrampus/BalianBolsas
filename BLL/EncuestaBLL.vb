@@ -33,7 +33,7 @@ Public Class EncuestaBLL
         Return vMapper.ConsultarRandomPorTipo(tipo)
     End Function
 
-    Public Function Responer(ByVal opcionId As Integer) As Boolean
+    Public Function Responder(ByVal opcionId As Integer) As Boolean
         Return vMapper.Responder(opcionId)
     End Function
 

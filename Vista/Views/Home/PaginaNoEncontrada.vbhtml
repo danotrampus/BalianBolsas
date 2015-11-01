@@ -20,15 +20,14 @@ End Section
 End Section
 
 <div class="row">
-    <div class="col-md-12 page-500">
+    <div class="col-md-12 page-404">
         <div class=" number">
-            500
+            404
         </div>
         <div class=" details">
-            <h3>Oops! Algo salió mal.</h3>
+            <h3>Oops! Estas perdido.</h3>
             <p>
-                Estamos tratando de arreglarlo!<br>
-                Por favor intente nuevamente en unos minutos.<br><br>
+                No podemos encontrar la pagina que estas buscando.<br>
             </p>
         </div>
     </div>

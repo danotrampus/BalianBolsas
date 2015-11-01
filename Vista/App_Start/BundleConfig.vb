@@ -48,6 +48,11 @@ Public Class BundleConfig
         bundles.Add(New StyleBundle("~/Content/datepicker/css").Include(
             "~/Content/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css"))
 
+        'Css Error
+        bundles.Add(New StyleBundle("~/Content/error/css").Include(
+            "~/Content/admin/pages/css/error.css"))
+
+
         'Js Global
         bundles.Add(New ScriptBundle("~/Content/global/js").Include(
             "~/Content/global/plugins/jquery.js",

@@ -79,7 +79,7 @@ Public Class EncuestaController
     <HttpPost()>
     Function Responder(ByVal e As Encuesta) As PartialViewResult
         If e.Respuesta <> 0 And e.Respuesta IsNot Nothing Then
-            Me.vBLL.Responer(e.Respuesta)
+            Me.vBLL.Responder(e.Respuesta)
         End If
         ModelState.Clear()
         Return PartialView(Me.vBLL.ConsultarRandomPorTipo("Encuesta"))

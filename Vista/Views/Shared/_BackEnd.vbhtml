@@ -344,6 +344,11 @@ End Code
                 });
                 return false;
             });
+
+            //Formulario de Encuestas
+            $('input[type=radio][name=Respuesta]').change(function () {
+                $("#btnResponderEncuesta").attr("disabled", false);
+            });
         });
     </script>
     @RenderSection("javascript_codigo", required:=False)
