@@ -64,7 +64,7 @@ Public Class NovedadMapper
     Public Function ListarNovedades() As List(Of Novedad)
         Dim ds As New DataSet
         Dim lista As New List(Of Novedad)
-        ds = vDatos.Leer("SP_Novedad_Listar2", Nothing)
+        ds = vDatos.Leer("SP_Novedad_Listar", Nothing)
 
         If ds.Tables(0).Rows.Count > 0 Then
             For Each Item As DataRow In ds.Tables(0).Rows

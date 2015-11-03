@@ -144,7 +144,7 @@ End Section
                                      <div class='input-group'>
                                          <input type='text' class='form-control' name='ListaOpciones[opcion-@id].Valor' value="@Model.ListaOpciones(index).Valor">
                                          <span class='input-group-btn'>
-                                             <button type='button' class='btn red eliminarOpcion' type='button'>Quitar</button>
+                                             <button type='button' class='btn red eliminarOpcion'>Quitar</button>
                                          </span>
                                      </div>
                                  </div>

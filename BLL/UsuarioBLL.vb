@@ -4,9 +4,11 @@ Imports Servicios
 Public Class UsuarioBLL
 
     Private vMapper As UsuarioMapper
+    Private vPerfilMapper As PerfilMapper
     Private vCryptoServicio As CryptoServicio
     Sub New()
         Me.vMapper = New UsuarioMapper()
+        Me.vPerfilMapper = New PerfilMapper()
         Me.vCryptoServicio = New CryptoServicio()
     End Sub
 
@@ -22,6 +24,7 @@ Public Class UsuarioBLL
         u.Clave = Me.vCryptoServicio.EncryptData(u.Clave)
         u.Activo = False
         u.TokenActivacion = token
+        u.PerfilesId.Add(Me.vPerfilMapper.ConsultarPorNombre("Cliente").Id)
         Return vMapper.Crear(u)
     End Function
 

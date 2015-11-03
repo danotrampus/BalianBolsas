@@ -63,14 +63,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriaBLL.vb" />
+    <Compile Include="ProductoBLL.vb" />
     <Compile Include="ContactoBLL.vb" />
     <Compile Include="EncuestaBLL.vb" />
     <Compile Include="NovedadBLL.vb" />
+    <Compile Include="ManijaBLL.vb" />
+    <Compile Include="ColorBLL.vb" />
+    <Compile Include="ImpresionBLL.vb" />
     <Compile Include="ResguardoBLL.vb" />
     <Compile Include="MensajeBLL.vb" />
     <Compile Include="BitacoraBLL.vb" />
     <Compile Include="PerfilBLL.vb" />
     <Compile Include="IdiomaBLL.vb" />
+    <Compile Include="PolimeroBLL.vb" />
     <Compile Include="UsuarioBLL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

@@ -181,8 +181,13 @@
     <Compile Include="Chat\ConexionUsuario.vb" />
     <Compile Include="Chat\UsuarioChatModel.vb" />
     <Compile Include="Controllers\BaseController.vb" />
+    <Compile Include="Controllers\ProductoController.vb" />
     <Compile Include="Controllers\ContactoController.vb" />
     <Compile Include="Controllers\EncuestaController.vb" />
+    <Compile Include="Controllers\ColorController.vb" />
+    <Compile Include="Controllers\ImpresionController.vb" />
+    <Compile Include="Controllers\PolimeroController.vb" />
+    <Compile Include="Controllers\ManijaController.vb" />
     <Compile Include="Controllers\NovedadController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
     <Compile Include="Controllers\BitacoraController.vb" />
@@ -198,6 +203,7 @@
     </Compile>
     <Compile Include="Helpers\DropdownLenguajeExtensions.vb" />
     <Compile Include="Helpers\MenuVerticalExtensions.vb" />
+    <Compile Include="ModelBinder\CustomModelBinder.vb" />
     <Compile Include="Models\BitacoraListAjaxViewModel.vb" />
     <Compile Include="Models\CambioClaveViewModel.vb" />
     <Compile Include="Models\FloatChartSerializableModel.vb" />
@@ -4708,10 +4714,29 @@
     <Content Include="Views\Encuesta\Responder.vbhtml" />
     <Content Include="Views\Novedad\Suscribirse.vbhtml" />
     <Content Include="Views\Home\PaginaNoEncontrada.vbhtml" />
+    <Content Include="Views\Polimero\Crear.vbhtml" />
+    <Content Include="Views\Polimero\Detalle.vbhtml" />
+    <Content Include="Views\Polimero\Index.vbhtml" />
+    <Content Include="Views\Manija\Crear.vbhtml" />
+    <Content Include="Views\Manija\Detalle.vbhtml" />
+    <Content Include="Views\Manija\Index.vbhtml" />
+    <Content Include="Views\Color\Crear.vbhtml" />
+    <Content Include="Views\Color\Detalle.vbhtml" />
+    <Content Include="Views\Color\Index.vbhtml" />
+    <Content Include="Views\Impresion\Crear.vbhtml" />
+    <Content Include="Views\Impresion\Detalle.vbhtml" />
+    <Content Include="Views\Impresion\Index.vbhtml" />
+    <Content Include="Views\Polimero\Editar.vbhtml" />
+    <Content Include="Views\Manija\Editar.vbhtml" />
+    <Content Include="Views\Color\Editar.vbhtml" />
+    <Content Include="Views\Impresion\Editar.vbhtml" />
+    <Content Include="Views\Producto\Crear.vbhtml" />
+    <Content Include="Views\Producto\Detalle.vbhtml" />
+    <Content Include="Views\Producto\Editar.vbhtml" />
+    <Content Include="Views\Producto\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Resguardos\Resguardo %2820-10-2015 19.16.25%29.bak" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -4743,6 +4768,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
+    <Folder Include="Content\img\" />
+    <Folder Include="Resguardos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.vbproj">

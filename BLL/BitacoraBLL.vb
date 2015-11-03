@@ -11,7 +11,7 @@ Public Class BitacoraBLL
     End Sub
 
     Public Function Listar() As List(Of Bitacora)
-        BitacoraServicio.Crear(TipoEvento.Informacion, "Se listó la bitácora.")
+        'BitacoraServicio.Crear(TipoEvento.Informacion, "Se listó la bitácora.")
         Return vMapper.Listar()
     End Function
 

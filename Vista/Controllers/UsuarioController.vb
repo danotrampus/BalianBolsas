@@ -109,15 +109,23 @@ Public Class UsuarioController
     <HttpPost()> _
     Function Registrar(ByVal model As RegistrarViewModel) As ActionResult
         If ModelState.IsValid Then
-            Dim u As New Usuario()
-            u.Nombre = model.Nombre
-            u.Apellido = model.Apellido
-            u.NombreUsuario = model.NombreUsuario
-            u.Clave = model.Clave
-            u.Email = model.Email
-            Dim uri As String = Request.Url.Scheme.ToString() + "://" + Request.Url.Host.ToString() + ":" + Request.Url.Port.ToString() + "/"
-            Me.vBLL.Registrar(u, uri)
-            Return RedirectToAction("Index", "Home")
+            If Me.vBLL.VerificarExistenciaPorEmail(model.Email) = False Then
+                If Me.vBLL.VerificarExistenciaPorNombreUsuario(model.NombreUsuario) = False Then
+                    Dim u As New Usuario()
+                    u.Nombre = model.Nombre
+                    u.Apellido = model.Apellido
+                    u.NombreUsuario = model.NombreUsuario
+                    u.Clave = model.Clave
+                    u.Email = model.Email
+                    Dim uri As String = Request.Url.Scheme.ToString() + "://" + Request.Url.Host.ToString() + ":" + Request.Url.Port.ToString() + "/"
+                    Me.vBLL.Registrar(u, uri)
+                    Return RedirectToAction("Index", "Home")
+                Else
+                    ModelState.AddModelError("NombreUsuario", "El nombre de usuario está en uso")
+                End If
+            Else
+                ModelState.AddModelError("Email", "El mail está en uso")
+            End If
         End If
 
         Return View(model)

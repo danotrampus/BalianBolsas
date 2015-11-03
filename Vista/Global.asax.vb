@@ -9,6 +9,7 @@ Public Class MvcApplication
     Inherits System.Web.HttpApplication
 
     Sub Application_Start()
+        ModelBinders.Binders.DefaultBinder = New CustomModelBinder()
         AreaRegistration.RegisterAllAreas()
 
         WebApiConfig.Register(GlobalConfiguration.Configuration)
@@ -27,7 +28,8 @@ Public Class MvcApplication
             newUser.Nombre = serializeModel.Nombre
             newUser.Apellido = serializeModel.Apellido
             newUser.NombreUsuario = serializeModel.NombreUsuario
-            newUser.Permisos = serializeModel.Permisos
+            Dim vPerfilBll As New PerfilBLL()
+            newUser.Permisos = vPerfilBll.ConsultarPermisosStringPorUsuario(serializeModel.UsuarioId)
             Dim vUsuarioBll As New UsuarioBLL()
             EE.SesionUsuario.Instance.UsuarioActual = vUsuarioBll.ConsultarPorId(serializeModel.UsuarioId)
             HttpContext.Current.User = newUser

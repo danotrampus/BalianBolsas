@@ -28,6 +28,10 @@ Public Class PerfilBLL
         Return vMapper.ConsultarPorId(id)
     End Function
 
+    Public Function ConsultarPorNombre(ByVal nombre As Integer) As Perfil
+        Return vMapper.ConsultarPorNombre(nombre)
+    End Function
+
     Public Function ConsultarPermisos(Optional ByVal perfilId As Integer = 0, Optional ByVal usuarioId As Integer = 0) As List(Of Permiso)
         Return Me.vMapper.ConsultarPermisos(perfilId, usuarioId)
     End Function

@@ -63,8 +63,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bobina.vb" />
+    <Compile Include="Bolsa.vb" />
     <Compile Include="Categoria.vb" />
+    <Compile Include="Color.vb" />
     <Compile Include="Contacto.vb" />
+    <Compile Include="Impresion.vb" />
+    <Compile Include="Manija.vb" />
+    <Compile Include="MateriaPrima.vb" />
     <Compile Include="Mensaje.vb" />
     <Compile Include="Bitacora.vb" />
     <Compile Include="Familia.vb" />
@@ -75,6 +81,8 @@
     <Compile Include="Patente.vb" />
     <Compile Include="Perfil.vb" />
     <Compile Include="Permiso.vb" />
+    <Compile Include="Polimero.vb" />
+    <Compile Include="Producto.vb" />
     <Compile Include="Resguardo.vb" />
     <Compile Include="SesionUsuario.vb" />
     <Compile Include="Suscriptor.vb" />
