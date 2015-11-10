@@ -181,14 +181,16 @@
     <Compile Include="Chat\ConexionUsuario.vb" />
     <Compile Include="Chat\UsuarioChatModel.vb" />
     <Compile Include="Controllers\BaseController.vb" />
-    <Compile Include="Controllers\ProductoController.vb" />
+    <Compile Include="Controllers\BolsaController.vb" />
     <Compile Include="Controllers\ContactoController.vb" />
     <Compile Include="Controllers\EncuestaController.vb" />
     <Compile Include="Controllers\ColorController.vb" />
     <Compile Include="Controllers\ImpresionController.vb" />
+    <Compile Include="Controllers\PedidoController.vb" />
     <Compile Include="Controllers\PolimeroController.vb" />
     <Compile Include="Controllers\ManijaController.vb" />
     <Compile Include="Controllers\NovedadController.vb" />
+    <Compile Include="Controllers\ProductoController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
     <Compile Include="Controllers\BitacoraController.vb" />
     <Compile Include="Controllers\CuentaController.vb" />
@@ -205,6 +207,7 @@
     <Compile Include="Helpers\MenuVerticalExtensions.vb" />
     <Compile Include="ModelBinder\CustomModelBinder.vb" />
     <Compile Include="Models\BitacoraListAjaxViewModel.vb" />
+    <Compile Include="Models\BolsaViewModel.vb" />
     <Compile Include="Models\CambioClaveViewModel.vb" />
     <Compile Include="Models\FloatChartSerializableModel.vb" />
     <Compile Include="Models\IdiomaEditarViewModel.vb" />
@@ -4730,10 +4733,11 @@
     <Content Include="Views\Manija\Editar.vbhtml" />
     <Content Include="Views\Color\Editar.vbhtml" />
     <Content Include="Views\Impresion\Editar.vbhtml" />
-    <Content Include="Views\Producto\Crear.vbhtml" />
-    <Content Include="Views\Producto\Detalle.vbhtml" />
-    <Content Include="Views\Producto\Editar.vbhtml" />
-    <Content Include="Views\Producto\Index.vbhtml" />
+    <Content Include="Views\Bolsa\Crear.vbhtml" />
+    <Content Include="Views\Bolsa\Detalle.vbhtml" />
+    <Content Include="Views\Bolsa\Index.vbhtml" />
+    <Content Include="Views\Bolsa\Editar.vbhtml" />
+    <Content Include="Views\Pedido\VerCarro.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

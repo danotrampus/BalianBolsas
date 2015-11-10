@@ -1,4 +1,4 @@
-﻿@ModelType IEnumerable(Of EE.Producto)
+﻿@ModelType IEnumerable(Of EE.Bolsa)
 
 @Code
     Layout = "~/Views/Shared/_BackEnd.vbhtml"
@@ -12,7 +12,7 @@ End Code
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="#">Productos</a>
+            <a href="#">Bolsas</a>
         </li>
     </ul>
 End Section
@@ -30,7 +30,7 @@ End Section
 @Section javascript_codigo
     <script type="text/javascript">
         $(document).ready(function () {
-            var table = $('#tablaProductos');
+            var table = $('#tablaBolsas');
 
             table.dataTable({
                 "language": {
@@ -77,7 +77,7 @@ End Section
         <div class="portlet box grey-cascade">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-eyedropper"></i>Listado de Productos
+                    <i class="fa fa-calendar-o"></i>Listado de Bolsas
                 </div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse">
@@ -91,7 +91,7 @@ End Section
                     <div class="row">
                         <div class="col-md-6">
                             @Code
-                                If User.IsInRole("CrearProducto") Then
+                                If User.IsInRole("CrearBolsa") Then
                             @<div class="btn-group">
                                 <a href="@Url.Action("Crear")" class="btn green">
                                     Nuevo <i class="fa fa-plus"></i>
@@ -102,7 +102,7 @@ End Section
                         </div>
                     </div>
                 </div>
-                <table class="table table-striped table-bordered table-hover" id="tablaProductos">
+                <table class="table table-striped table-bordered table-hover" id="tablaBolsas">
                     <thead>
                         <tr>
                             <th>Imagen</th>
@@ -111,6 +111,7 @@ End Section
                             <th>Impresión</th>
                             <th>Soldadura</th>
                             <th>Formato</th>
+                            <th>Manija</th>
                             <th>Costo Unitario</th>
                             <th>Precio Unitario</th>
                             <th>Acciones</th>
@@ -139,6 +140,9 @@ End Section
                                  <td>
                                      @item.Formato
                                  </td>
+                                 <td>
+                                     @item.ObtenerDescripcionManija()
+                                 </td>
                                 <td>
                                     @item.CalcularCosto()
                                 </td>
@@ -147,7 +151,7 @@ End Section
                                  </td>
                                 <td class="text-center">
                                     @Code
-                                    If User.IsInRole("ConsultarProducto") Then
+                                    If User.IsInRole("ConsultarBolsa") Then
                                         @Html.ActionLink("Ver", "Detalle", New With {.id = currentItem.Id}, New With {.class = "btn default btn-xs"})
                                     End If
                                     End Code

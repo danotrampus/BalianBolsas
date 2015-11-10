@@ -1,4 +1,4 @@
-﻿@ModelType EE.Color
+﻿@ModelType EE.Bolsa
 
 @Code
     Layout = "~/Views/Shared/_BackEnd.vbhtml"
@@ -12,7 +12,7 @@ End Code
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="@Url.Action("Index", "Colores")">Colores</a>
+            <a href="@Url.Action("Index", "Bolsa")">Bolsas</a>
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
@@ -27,7 +27,7 @@ End Section
         <div class="portlet box blue">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-eyedropper"></i>Detalle de color
+                    <i class="fa fa-calendar-o"></i>Detalle de bolsa
                 </div>
                 <ul class="nav nav-tabs">
                     <li class="active">
@@ -41,8 +41,15 @@ End Section
                 <div class="tab-content">
                     <div class="tab-pane active" id="portlet_tab1">
                         <p>
-                            @Html.DisplayNameFor(Function(model) model.Nombre): @Html.DisplayFor(Function(model) model.Nombre)<br />
-                            @Html.DisplayNameFor(Function(model) model.Codigo): @Html.DisplayFor(Function(model) model.Codigo)<br />
+                            <img class="img-responsive" src="@Model.Imagen" /><br />
+                            Ancho (cm): @Model.Ancho<br />
+                            Largo (cm): @Model.Largo<br />
+                            Espesor (µm): @Model.Espesor<br />
+                            Soldadura: @Model.Soldadura<br />
+                            Formato: @Model.Formato<br />
+                            Manija: @Model.ObtenerDescripcionManija()<br />
+                            Impresion: @Model.ObtenerDescripcionImpresion()<br />
+                            Polímero: @Model.Polimero.Nombre<br />
                         </p>
                     </div>
                 </div>
@@ -53,20 +60,20 @@ End Section
 <div class="row">
     <div class="col-md-12">
         @Code
-            If User.IsInRole("ListarColores") Then
+            If User.IsInRole("ListarBolsas") Then
             @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn default"})
             End If
-            If User.IsInRole("EditarColor") Then
+            If User.IsInRole("EditarBolsa") Then
             @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn blue"})
             End If
-            If User.IsInRole("EliminarColor") Then
+            If User.IsInRole("EliminarBolsa") Then
             @<a class="btn red" data-toggle="modal" href="#delete-confirmation">Eliminar</a>
             End If
         End Code
     </div>
 </div>
 
-@Using Html.BeginForm("Eliminar", "Color", New With {.id = Model.Id}, FormMethod.Get)
+@Using Html.BeginForm("Eliminar", "Bolsa", New With {.id = Model.Id}, FormMethod.Get)
     @Html.AntiForgeryToken()
     @<div class="modal fade" id="delete-confirmation" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">

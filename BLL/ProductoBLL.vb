@@ -23,6 +23,9 @@ Public Class ProductoBLL
     Public Function Listar() As List(Of Producto)
         Return vMapper.Listar()
     End Function
+    Public Function ListarBolsas() As List(Of Bolsa)
+        Return vMapper.ListarBolsas()
+    End Function
 
     Public Function ConsultarPorId(ByVal id As Integer) As Producto
         Return vMapper.ConsultarPorId(id)

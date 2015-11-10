@@ -68,6 +68,7 @@
     <Compile Include="Categoria.vb" />
     <Compile Include="Color.vb" />
     <Compile Include="Contacto.vb" />
+    <Compile Include="DetallePedido.vb" />
     <Compile Include="Impresion.vb" />
     <Compile Include="Manija.vb" />
     <Compile Include="MateriaPrima.vb" />
@@ -79,6 +80,7 @@
     <Compile Include="Novedad.vb" />
     <Compile Include="Opcion.vb" />
     <Compile Include="Patente.vb" />
+    <Compile Include="Pedido.vb" />
     <Compile Include="Perfil.vb" />
     <Compile Include="Permiso.vb" />
     <Compile Include="Polimero.vb" />

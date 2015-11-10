@@ -22,4 +22,8 @@
     Public Overrides Function ObtenerDescripcionMedidas() As String
         Return Me.Ancho.ToString() + "/" + Me.Espesor.ToString()
     End Function
+
+    Public Overrides Function ObtenerNombre() As String
+        Return ""
+    End Function
 End Class

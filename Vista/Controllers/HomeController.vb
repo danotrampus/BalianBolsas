@@ -1,11 +1,10 @@
 ﻿Public Class HomeController
     Inherits BaseController
 
-    '
-    ' GET: /Home
-
     Function Index() As ActionResult
-        Return View()
+        Dim vProductoBLL As New BLL.ProductoBLL
+        Dim vListaProductos As List(Of EE.Bolsa) = vProductoBLL.ListarBolsas()
+        Return View(vListaProductos)
     End Function
 
     Function Empresa() As ActionResult

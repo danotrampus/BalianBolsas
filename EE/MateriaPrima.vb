@@ -2,7 +2,7 @@
 Public Class MateriaPrima
 
     Private vId As Integer
-    <Display(Name:="Materia Prima")>
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Materia Prima")>
     Public Property Id() As Integer
         Get
             Return vId

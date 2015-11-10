@@ -1,17 +1,7 @@
 ﻿Imports System.ComponentModel.DataAnnotations
 Public MustInherit Class Producto
 
-    Private vType As String
-    Public Property Type() As String
-        Get
-            Return vType
-        End Get
-        Set(ByVal value As String)
-            vType = value
-        End Set
-    End Property
-
-    Private vImagen As String
+    Protected vImagen As String
     Public Property Imagen() As String
         Get
             Return vImagen
@@ -21,7 +11,7 @@ Public MustInherit Class Producto
         End Set
     End Property
 
-    Private vId As Integer
+    Protected vId As Integer
     Public Property Id() As Integer
         Get
             Return vId
@@ -31,8 +21,7 @@ Public MustInherit Class Producto
         End Set
     End Property
 
-    Private vAncho As Integer
-    <Required(ErrorMessage:="Campo requerido")>
+    Protected vAncho As Integer
     Public Property Ancho() As Integer
         Get
             Return vAncho
@@ -42,7 +31,7 @@ Public MustInherit Class Producto
         End Set
     End Property
 
-    Private vLargo As Integer
+    Protected vLargo As Integer
     Public Property Largo() As Integer
         Get
             Return vLargo
@@ -52,8 +41,7 @@ Public MustInherit Class Producto
         End Set
     End Property
 
-    Private vEspesor As Integer
-    <Required(ErrorMessage:="Campo requerido")>
+    Protected vEspesor As Integer
     Public Property Espesor() As Integer
         Get
             Return vEspesor
@@ -63,8 +51,7 @@ Public MustInherit Class Producto
         End Set
     End Property
 
-    Private vSoldadura As String
-    <Required(ErrorMessage:="Campo requerido")>
+    Protected vSoldadura As String
     Public Property Soldadura() As String
         Get
             Return vSoldadura
@@ -74,8 +61,7 @@ Public MustInherit Class Producto
         End Set
     End Property
 
-    Private vFormato As String
-    <Required(ErrorMessage:="Campo requerido")>
+    Protected vFormato As String
     Public Property Formato() As String
         Get
             Return vFormato
@@ -85,7 +71,7 @@ Public MustInherit Class Producto
         End Set
     End Property
 
-    Private vPolimero As New Polimero
+    Protected vPolimero As New Polimero
     Public Property Polimero() As Polimero
         Get
             Return vPolimero
@@ -95,7 +81,7 @@ Public MustInherit Class Producto
         End Set
     End Property
 
-    Private vImpresion As Impresion
+    Protected vImpresion As New Impresion
     Public Property Impresion() As Impresion
         Get
             Return vImpresion
@@ -111,9 +97,13 @@ Public MustInherit Class Producto
 
     Public MustOverride Function ObtenerDescripcionMedidas() As String
 
+    Public MustOverride Function ObtenerNombre() As String
+
     Public Function ObtenerDescripcionImpresion() As String
         If Me.Impresion IsNot Nothing Then
-            Return Me.Impresion.Nombre
+            If Me.Impresion.Id <> 0 Then
+                Return Me.Impresion.Nombre
+            End If
         End If
         Return ""
     End Function

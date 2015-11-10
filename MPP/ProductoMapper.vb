@@ -11,15 +11,19 @@ Public Class ProductoMapper
     Public Function Crear(ByVal entidad As Producto) As Boolean
         Dim parametros As New Hashtable
 
+        parametros.Add("@Ancho", entidad.Ancho)
         If entidad.GetType() = GetType(Bolsa) Then
+            Dim bolsa As Bolsa = DirectCast(entidad, EE.Bolsa)
             parametros.Add("@Tipo", "Bolsa")
+            parametros.Add("@Largo", bolsa.Largo)
+            If bolsa.Manija IsNot Nothing Then
+                If bolsa.Manija.Id <> 0 Then
+                    parametros.Add("@Manija_Id", bolsa.Manija.Id)
+                End If
+            End If
         End If
         If entidad.GetType() = GetType(Bobina) Then
             parametros.Add("@Tipo", "Bobina")
-        End If
-        parametros.Add("@Ancho", entidad.Ancho)
-        If entidad.GetType() = GetType(Bolsa) Then
-            parametros.Add("@Largo", entidad.Largo)
         End If
         parametros.Add("@Espesor", entidad.Espesor)
         parametros.Add("@Formato", entidad.Formato)
@@ -27,7 +31,9 @@ Public Class ProductoMapper
         parametros.Add("@Soldadura", entidad.Soldadura)
         parametros.Add("@Polimero_Id", entidad.Polimero.Id)
         If entidad.Impresion IsNot Nothing Then
-            parametros.Add("@Impresion_Id", entidad.Impresion.Id)
+            If entidad.Impresion.Id <> 0 Then
+                parametros.Add("@Impresion_Id", entidad.Impresion.Id)
+            End If
         End If
 
         Return vDatos.Escribir("SP_Producto_Crear", parametros)
@@ -37,20 +43,29 @@ Public Class ProductoMapper
         Dim parametros As New Hashtable
 
         parametros.Add("@Id", entidad.Id)
+        parametros.Add("@Ancho", entidad.Ancho)
         If entidad.GetType() = GetType(Bolsa) Then
+            Dim bolsa As Bolsa = DirectCast(entidad, EE.Bolsa)
             parametros.Add("@Tipo", "Bolsa")
+            parametros.Add("@Largo", bolsa.Largo)
+            If bolsa.Manija IsNot Nothing Then
+                If bolsa.Manija.Id <> 0 Then
+                    parametros.Add("@Manija_Id", bolsa.Manija.Id)
+                End If
+            End If
         End If
         If entidad.GetType() = GetType(Bobina) Then
             parametros.Add("@Tipo", "Bobina")
         End If
-        parametros.Add("@Ancho", entidad.Ancho)
-        parametros.Add("@Largo", entidad.Largo)
         parametros.Add("@Espesor", entidad.Espesor)
         parametros.Add("@Formato", entidad.Formato)
+        parametros.Add("@Imagen", entidad.Imagen)
         parametros.Add("@Soldadura", entidad.Soldadura)
         parametros.Add("@Polimero_Id", entidad.Polimero.Id)
         If entidad.Impresion IsNot Nothing Then
-            parametros.Add("@Impresion_Id", entidad.Impresion.Id)
+            If entidad.Impresion.Id <> 0 Then
+                parametros.Add("@Impresion_Id", entidad.Impresion.Id)
+            End If
         End If
 
         Return vDatos.Escribir("SP_Producto_Editar", parametros)
@@ -89,7 +104,12 @@ Public Class ProductoMapper
                 entidad.Polimero.Nombre = Item("PolimeroNombre")
                 entidad.Polimero.Densidad = Item("PolimeroDensidad")
                 entidad.Polimero.Precio = Item("PolimeroPrecio")
-                If Item("ImpresionId") IsNot Nothing Then
+                Dim colorPolimero As New Color
+                colorPolimero.Id = Item("PolimeroColorId")
+                colorPolimero.Nombre = Item("PolimeroColorNombre")
+                colorPolimero.Codigo = Item("PolimeroColorCodigo")
+                entidad.Polimero.Color = colorPolimero
+                If IsDBNull(Item("ImpresionId")) = False Then
                     Dim imp As New Impresion
                     imp.Id = Item("ImpresionId")
                     imp.Tratado = Item("ImpresionTratado")
@@ -98,7 +118,75 @@ Public Class ProductoMapper
 
                     entidad.Impresion = imp
                 End If
+                If IsDBNull(Item("ManijaId")) = False Then
+                    Dim m As New Manija
+                    m.Id = Item("ManijaId")
+                    m.Nombre = Item("ManijaNombre")
+                    m.Precio = Item("ManijaPrecio")
+                    Dim colorManija As New Color
+                    colorManija.Id = Item("ManijaColorId")
+                    colorManija.Nombre = Item("ManijaColorNombre")
+                    colorManija.Codigo = Item("ManijaColorCodigo")
+                    m.Color = colorManija
+
+                    DirectCast(entidad, EE.Bolsa).Manija = m
+                End If
                 lista.Add(entidad)
+            Next
+        End If
+
+        Return lista
+    End Function
+
+    Public Function ListarBolsas() As List(Of Bolsa)
+        Dim ds As New DataSet
+        Dim lista As New List(Of Bolsa)
+        ds = vDatos.Leer("SP_Producto_Listar", Nothing)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            For Each Item As DataRow In ds.Tables(0).Rows
+                If Item("Tipo") = "Bolsa" Then
+                    Dim entidad As New Bolsa
+                    entidad.Id = Item("Id")
+                    entidad.Ancho = Item("Ancho")
+                    entidad.Largo = Item("Largo")
+                    entidad.Espesor = Item("Espesor")
+                    entidad.Formato = Item("Formato")
+                    entidad.Soldadura = Item("Soldadura")
+                    entidad.Imagen = Item("Imagen")
+                    entidad.Polimero.Id = Item("PolimeroId")
+                    entidad.Polimero.Nombre = Item("PolimeroNombre")
+                    entidad.Polimero.Densidad = Item("PolimeroDensidad")
+                    entidad.Polimero.Precio = Item("PolimeroPrecio")
+                    Dim colorPolimero As New Color
+                    colorPolimero.Id = Item("PolimeroColorId")
+                    colorPolimero.Nombre = Item("PolimeroColorNombre")
+                    colorPolimero.Codigo = Item("PolimeroColorCodigo")
+                    entidad.Polimero.Color = colorPolimero
+                    If IsDBNull(Item("ImpresionId")) = False Then
+                        Dim imp As New Impresion
+                        imp.Id = Item("ImpresionId")
+                        imp.Tratado = Item("ImpresionTratado")
+                        imp.CantidadColores = Item("ImpresionCantidadColores")
+                        imp.Precio = Item("ImpresionPrecio")
+
+                        entidad.Impresion = imp
+                    End If
+                    If IsDBNull(Item("ManijaId")) = False Then
+                        Dim m As New Manija
+                        m.Id = Item("ManijaId")
+                        m.Nombre = Item("ManijaNombre")
+                        m.Precio = Item("ManijaPrecio")
+                        Dim colorManija As New Color
+                        colorManija.Id = Item("ManijaColorId")
+                        colorManija.Nombre = Item("ManijaColorNombre")
+                        colorManija.Codigo = Item("ManijaColorCodigo")
+                        m.Color = colorManija
+
+                        entidad.Manija = m
+                    End If
+                    lista.Add(entidad)
+                End If
             Next
         End If
 
@@ -130,8 +218,13 @@ Public Class ProductoMapper
             entidad.Imagen = Item("Imagen")
             entidad.Polimero.Id = Item("PolimeroId")
             entidad.Polimero.Nombre = Item("PolimeroNombre")
-            entidad.Polimero.Densidad = Item("PolimeroPrecio")
+            entidad.Polimero.Densidad = Item("PolimeroDensidad")
             entidad.Polimero.Precio = Item("PolimeroPrecio")
+            Dim colorPolimero As New Color
+            colorPolimero.Id = Item("PolimeroColorId")
+            colorPolimero.Nombre = Item("PolimeroColorNombre")
+            colorPolimero.Codigo = Item("PolimeroColorCodigo")
+            entidad.Polimero.Color = colorPolimero
             If Item("ImpresionId") IsNot Nothing Then
                 Dim imp As New Impresion
                 imp.Id = Item("ImpresionId")
@@ -140,6 +233,17 @@ Public Class ProductoMapper
                 imp.Precio = Item("ImpresionPrecio")
 
                 entidad.Impresion = imp
+            End If
+            If entidad.Formato = "Con Manija" Then
+                Dim m As New Manija
+                m.Id = Item("ManijaId")
+                m.Nombre = Item("ManijaNombre")
+                m.Precio = Item("ManijaPrecio")
+                Dim colorManija As New Color
+                colorManija.Id = Item("ManijaColorId")
+                colorManija.Nombre = Item("ManijaColorNombre")
+                colorManija.Codigo = Item("ManijaColorCodigo")
+                m.Color = colorManija
             End If
             Return entidad
         Else
