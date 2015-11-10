@@ -4741,7 +4741,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Resguardos\Resguardo %2803-11-2015 19.24.47%29.bak" />
+    <Content Include="Resguardos\Resguardo %2810-11-2015 19.33.30%29.bak" />
+    <Content Include="Resguardos\Resguardo %2810-11-2015 19.33.56%29.bak" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
