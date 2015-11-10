@@ -72,6 +72,11 @@ End Code
                             Novedades
                         </a>
                     </li>
+                    <li class="classic-menu-dropdown">
+                        <a href="@Url.Action("VerCarro", "Pedido")">
+                            Compra Actual
+                        </a>
+                    </li>
                 </ul>
             </div>
             <!-- END LOGO -->

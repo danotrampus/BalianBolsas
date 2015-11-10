@@ -4738,6 +4738,7 @@
     <Content Include="Views\Bolsa\Index.vbhtml" />
     <Content Include="Views\Bolsa\Editar.vbhtml" />
     <Content Include="Views\Pedido\VerCarro.vbhtml" />
+    <Content Include="Views\Pedido\Agregar.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

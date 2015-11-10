@@ -1,4 +1,5 @@
-﻿Public Class DetallePedido
+﻿Imports System.ComponentModel.DataAnnotations
+Public Class DetallePedido
 
     Private vId As Integer
     Public Property Id() As Integer
@@ -11,6 +12,7 @@
     End Property
 
     Private vCantidad As Integer
+    <Required(ErrorMessage:="Campo requerido"), RegularExpression("^\d{1,16}?$", ErrorMessage:="Formato incorrecto")>
     Public Property Cantidad() As Integer
         Get
             Return vCantidad
@@ -42,7 +44,10 @@
 
     Public ReadOnly Property Total() As Double
         Get
-            Return Math.Round(Me.Cantidad * Me.Producto.CalcularPrecio(), 3)
+            If Me.Producto IsNot Nothing Then
+                Return Math.Round(Me.Cantidad * Me.Producto.CalcularPrecio(), 3)
+            End If
+            Return 0
         End Get
     End Property
 End Class

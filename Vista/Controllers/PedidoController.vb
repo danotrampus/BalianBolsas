@@ -13,15 +13,27 @@ Public Class PedidoController
         Return View()
     End Function
 
-    Function Agregar(ByVal form As FormCollection) As ActionResult
-        Dim pd As New DetallePedido
-        Dim vProducto As Producto = Me.vProductoBLL.ConsultarPorId(form.Item("Producto_Id"))
-        pd.Cantidad = form.Item("Cantidad")
-        pd.Precio = vProducto.CalcularPrecio()
-        pd.Producto = vProducto
-        Me.ObtenerCarro().Importe += pd.Total
-        Me.ObtenerCarro().ListaDetalles.Add(pd)
-        Return RedirectToAction("Index", "Home")
+    Function Agregar(ByVal id As Integer) As ActionResult
+        Dim model As New DetallePedido
+        model.Producto = Me.vProductoBLL.ConsultarPorId(id)
+        Return View(model)
+    End Function
+
+    <HttpPost()>
+    Function Agregar(ByVal entidad As DetallePedido) As ActionResult
+        If ModelState.IsValid Then
+            Dim pd As New DetallePedido
+            Dim vProducto As Producto = Me.vProductoBLL.ConsultarPorId(entidad.Producto.Id)
+            pd.Cantidad = entidad.Cantidad
+            pd.Precio = vProducto.CalcularPrecio()
+            pd.Producto = vProducto
+            Me.ObtenerCarro().Importe += pd.Total
+            Me.ObtenerCarro().ListaDetalles.Add(pd)
+            Return RedirectToAction("Index", "Home")
+        End If
+        Dim model As New DetallePedido
+        model.Producto = Me.vProductoBLL.ConsultarPorId(entidad.Producto.Id)
+        Return View(model)
     End Function
 
     Function Quitar(ByVal id As Integer) As ActionResult

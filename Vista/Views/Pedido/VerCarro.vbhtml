@@ -33,6 +33,7 @@ End Section
             var table = $('#tablaPedido');
 
             table.dataTable({
+                "sDom": "<'table-responsive' t>",
                 "language": {
                     "sProcessing": "Procesando...",
                     "sLengthMenu": "Mostrar _MENU_ registros",
@@ -118,6 +119,11 @@ End Section
                         End Code
                     </tbody>
                 </table>
+                <div class="row">
+                    <div class="col-md-12 pull-right">
+                        <h3>@Model.Importe</h3>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- END EXAMPLE TABLE PORTLET-->

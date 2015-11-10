@@ -73,7 +73,7 @@ End Section
                                 </td>
                                 <td class="text-center">
                                     @Code
-                                        @Html.ActionLink("Agregar...", "Detalle", "Producto", New With {.id = currentItem.Id}, New With {.class = "btn default btn-xs"})
+                                        @Html.ActionLink("Agregar...", "Agregar", "Pedido", New With {.id = currentItem.Id}, New With {.class = "btn default btn-xs"})
                                     End Code
                                 </td>
                             </tr>
