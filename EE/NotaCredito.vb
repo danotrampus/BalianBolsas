@@ -18,4 +18,8 @@
     Public Overrides Function ObtenerTipo() As String
         Return "Nota de Crédito " + Me.TipoComprobante
     End Function
+
+    Public Overrides Function ObtenerTipoSinFormato() As String
+        Return "NotaCredito"
+    End Function
 End Class

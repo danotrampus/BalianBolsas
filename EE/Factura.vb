@@ -1,7 +1,7 @@
 ﻿Public Class Factura
     Inherits Movimiento
 
-    Private vDireccion As Direccion
+    Private vDireccion As New Direccion
     Public Property Direccion() As Direccion
         Get
             Return vDireccion
@@ -27,5 +27,9 @@
 
     Public Overrides Function ObtenerTipo() As String
         Return "Factura " + Me.TipoComprobante
+    End Function
+
+    Public Overrides Function ObtenerTipoSinFormato() As String
+        Return "Factura"
     End Function
 End Class

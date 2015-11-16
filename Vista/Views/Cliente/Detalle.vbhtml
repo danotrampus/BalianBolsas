@@ -113,6 +113,7 @@ End Section
                                     <th>Número</th>
                                     <th>Observación</th>
                                     <th>Importe</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -132,6 +133,9 @@ End Section
                                             <td>
                                                 @item.ObtenerImporte
                                             </td>
+                                             <td>
+                                                 @Html.ActionLink("Exportar", "GenerarPdf", "Movimiento", New With {.tipo = item.ObtenerTipoSinFormato().ToString(), .numero = item.Numero.ToString(), .tipoComprobante = item.TipoComprobante.ToString()}, New With {.class = "btn sm default"})
+                                             </td>
                                         </tr>
                                         Next
                                     End If

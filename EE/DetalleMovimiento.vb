@@ -30,4 +30,10 @@
         End Set
     End Property
 
+    Public ReadOnly Property Total() As Double
+        Get
+            Return Math.Round(Me.Cantidad * Me.Precio, 3)
+        End Get
+    End Property
+
 End Class

@@ -65,6 +65,9 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa">
+      <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -188,6 +191,7 @@
     <Compile Include="Controllers\EncuestaController.vb" />
     <Compile Include="Controllers\ColorController.vb" />
     <Compile Include="Controllers\ImpresionController.vb" />
+    <Compile Include="Controllers\MovimientoController.vb" />
     <Compile Include="Controllers\OrdenProduccionController.vb" />
     <Compile Include="Controllers\PedidoController.vb" />
     <Compile Include="Controllers\PolimeroController.vb" />
@@ -572,6 +576,7 @@
     <Content Include="Content\global\plugins\typeahead\README.md" />
     <Content Include="Content\global\plugins\uniform\css\uniform.default.scss" />
     <Content Include="Content\global\plugins\uniform\README.md" />
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -4685,6 +4690,7 @@
     <Content Include="Content\global\scripts\datatable.js" />
     <Content Include="Content\global\scripts\metronic.js" />
     <Content Include="packages.config" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Views\Usuario\Index.vbhtml" />
@@ -4756,6 +4762,7 @@
     <Content Include="Views\Pedido\Detalle.vbhtml" />
     <Content Include="Views\Bolsa\Comentar.vbhtml" />
     <Content Include="Views\Bolsa\Comparar.vbhtml" />
+    <Content Include="Views\Movimiento\Detalle.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

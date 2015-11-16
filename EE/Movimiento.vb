@@ -70,8 +70,22 @@
         End Set
     End Property
 
+    Public ReadOnly Property Iva() As Double
+        Get
+            Return Me.Importe * 0.21
+        End Get
+    End Property
+
+    Public ReadOnly Property Subtotal() As Double
+        Get
+            Return Me.Importe - Me.Iva
+        End Get
+    End Property
+
     Public MustOverride Function ObtenerImporte() As Double
 
     Public MustOverride Function ObtenerTipo() As String
+
+    Public MustOverride Function ObtenerTipoSinFormato() As String
 
 End Class
