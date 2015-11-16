@@ -82,6 +82,17 @@ Public Class Usuario
         End Set
     End Property
 
+    Private vTelefono As String
+    Public Property Telefono() As String
+        Get
+            Return vTelefono
+        End Get
+        Set(ByVal value As String)
+            vTelefono = value
+        End Set
+    End Property
+
+
     Private vPerfilesId As New List(Of Integer)
     <ListRequired(ErrorMessage:="Campo requerido"), Display(Name:="Perfiles")>
     Public Property PerfilesId() As List(Of Integer)
@@ -111,6 +122,36 @@ Public Class Usuario
         Set(ByVal value As String)
             vTokenActivacion = value
         End Set
+    End Property
+
+    Private vListaMovimientos As New List(Of Movimiento)
+    Public Property ListaMovimientos() As List(Of Movimiento)
+        Get
+            Return vListaMovimientos
+        End Get
+        Set(ByVal value As List(Of Movimiento))
+            vListaMovimientos = value
+        End Set
+    End Property
+
+    Private vListaPedidos As New List(Of Pedido)
+    Public Property ListaPedidos() As List(Of Pedido)
+        Get
+            Return vListaPedidos
+        End Get
+        Set(ByVal value As List(Of Pedido))
+            vListaPedidos = value
+        End Set
+    End Property
+
+    Public ReadOnly Property TotalMovimientos() As Double
+        Get
+            Dim valor As Double = 0
+            For Each m As Movimiento In Me.ListaMovimientos
+                valor += m.ObtenerImporte()
+            Next
+            Return valor
+        End Get
     End Property
 
 End Class

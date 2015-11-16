@@ -9,7 +9,7 @@ var QuickSidebar = function () {
     var initChat = function () {
         
         chat.client.OnlineStatus = function (connectionId, userList) {
-            console.log("Usuarios Actualizados " + connectionId);
+            //console.log("Usuarios Actualizados " + connectionId);
             var loggedUserId = $(".dropdown-user").attr("data-usuarioid");
             $("#ulOnlineUsers").html("");
             for (var i = 0; i < userList.length; i++) {
@@ -30,7 +30,7 @@ var QuickSidebar = function () {
         };
 
         chat.client.joined = function (connectionId, userList) {
-            console.log("Conectado " + connectionId);
+            //console.log("Conectado " + connectionId);
             var loggedUserId = $(".dropdown-user").attr("data-usuarioid");
             $("#ulOnlineUsers").html("");
             for (var i = 0; i < userList.length; i++) {
@@ -117,8 +117,8 @@ var QuickSidebar = function () {
         };
 
         $.connection.hub.start(function () {
-            console.log("Conectando...");
-            console.log(chat.server.getAllOnlineStatus());
+            //console.log("Conectando...");
+            //console.log(chat.server.getAllOnlineStatus());
         });
     };
 

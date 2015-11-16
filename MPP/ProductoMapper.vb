@@ -100,6 +100,7 @@ Public Class ProductoMapper
                 entidad.Formato = Item("Formato")
                 entidad.Soldadura = Item("Soldadura")
                 entidad.Imagen = Item("Imagen")
+                entidad.Valoracion = Item("Valoracion")
                 entidad.Polimero.Id = Item("PolimeroId")
                 entidad.Polimero.Nombre = Item("PolimeroNombre")
                 entidad.Polimero.Densidad = Item("PolimeroDensidad")
@@ -154,6 +155,66 @@ Public Class ProductoMapper
                     entidad.Formato = Item("Formato")
                     entidad.Soldadura = Item("Soldadura")
                     entidad.Imagen = Item("Imagen")
+                    entidad.Valoracion = Item("Valoracion")
+                    entidad.Polimero.Id = Item("PolimeroId")
+                    entidad.Polimero.Nombre = Item("PolimeroNombre")
+                    entidad.Polimero.Densidad = Item("PolimeroDensidad")
+                    entidad.Polimero.Precio = Item("PolimeroPrecio")
+                    Dim colorPolimero As New Color
+                    colorPolimero.Id = Item("PolimeroColorId")
+                    colorPolimero.Nombre = Item("PolimeroColorNombre")
+                    colorPolimero.Codigo = Item("PolimeroColorCodigo")
+                    entidad.Polimero.Color = colorPolimero
+                    If IsDBNull(Item("ImpresionId")) = False Then
+                        Dim imp As New Impresion
+                        imp.Id = Item("ImpresionId")
+                        imp.Tratado = Item("ImpresionTratado")
+                        imp.CantidadColores = Item("ImpresionCantidadColores")
+                        imp.Precio = Item("ImpresionPrecio")
+
+                        entidad.Impresion = imp
+                    End If
+                    If IsDBNull(Item("ManijaId")) = False Then
+                        Dim m As New Manija
+                        m.Id = Item("ManijaId")
+                        m.Nombre = Item("ManijaNombre")
+                        m.Precio = Item("ManijaPrecio")
+                        Dim colorManija As New Color
+                        colorManija.Id = Item("ManijaColorId")
+                        colorManija.Nombre = Item("ManijaColorNombre")
+                        colorManija.Codigo = Item("ManijaColorCodigo")
+                        m.Color = colorManija
+
+                        entidad.Manija = m
+                    End If
+                    lista.Add(entidad)
+                End If
+            Next
+        End If
+
+        Return lista
+    End Function
+
+    Public Function Comparar(ByVal ids As String) As List(Of Bolsa)
+        Dim ds As New DataSet
+        Dim lista As New List(Of Bolsa)
+        Dim parametros As New Hashtable
+
+        parametros.Add("@Ids", ids)
+        ds = vDatos.Leer("SP_Producto_Comparar", parametros)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            For Each Item As DataRow In ds.Tables(0).Rows
+                If Item("Tipo") = "Bolsa" Then
+                    Dim entidad As New Bolsa
+                    entidad.Id = Item("Id")
+                    entidad.Ancho = Item("Ancho")
+                    entidad.Largo = Item("Largo")
+                    entidad.Espesor = Item("Espesor")
+                    entidad.Formato = Item("Formato")
+                    entidad.Soldadura = Item("Soldadura")
+                    entidad.Imagen = Item("Imagen")
+                    entidad.Valoracion = Item("Valoracion")
                     entidad.Polimero.Id = Item("PolimeroId")
                     entidad.Polimero.Nombre = Item("PolimeroNombre")
                     entidad.Polimero.Densidad = Item("PolimeroDensidad")
@@ -225,7 +286,7 @@ Public Class ProductoMapper
             colorPolimero.Nombre = Item("PolimeroColorNombre")
             colorPolimero.Codigo = Item("PolimeroColorCodigo")
             entidad.Polimero.Color = colorPolimero
-            If Item("ImpresionId") IsNot Nothing Then
+            If IsDBNull(Item("ImpresionId")) = False Then
                 Dim imp As New Impresion
                 imp.Id = Item("ImpresionId")
                 imp.Tratado = Item("ImpresionTratado")
@@ -234,7 +295,7 @@ Public Class ProductoMapper
 
                 entidad.Impresion = imp
             End If
-            If entidad.Formato = "Con Manija" Then
+            If IsDBNull(Item("ManijaId")) = False Then
                 Dim m As New Manija
                 m.Id = Item("ManijaId")
                 m.Nombre = Item("ManijaNombre")
@@ -245,10 +306,32 @@ Public Class ProductoMapper
                 colorManija.Codigo = Item("ManijaColorCodigo")
                 m.Color = colorManija
             End If
+            Dim listaComentarios As New List(Of Comentario)
+            If ds.Tables(1).Rows.Count > 0 Then
+                For Each row2 As DataRow In ds.Tables(1).Rows
+                    Dim c As New Comentario
+                    c.Id = row2("Id")
+                    c.Valoracion = row2("Valoracion")
+                    c.Mensaje = row2("Mensaje")
+                    c.Producto.Id = entidad.Id
+                    listaComentarios.Add(c)
+                Next
+            End If
+            entidad.ListaComentarios = listaComentarios
             Return entidad
         Else
             Return Nothing
         End If
+    End Function
+
+    Public Function Comentar(ByVal entidad As Comentario) As Boolean
+        Dim parametros As New Hashtable
+
+        parametros.Add("@Valoracion", entidad.Valoracion)
+        parametros.Add("@Mensaje", entidad.Mensaje)
+        parametros.Add("@Producto_Id", entidad.Producto.Id)
+
+        Return vDatos.Escribir("SP_Comentario_Crear", parametros)
     End Function
 
 End Class

@@ -44,10 +44,7 @@ Public Class DetallePedido
 
     Public ReadOnly Property Total() As Double
         Get
-            If Me.Producto IsNot Nothing Then
-                Return Math.Round(Me.Cantidad * Me.Producto.CalcularPrecio(), 3)
-            End If
-            Return 0
+            Return Math.Round(Me.Cantidad * Me.Precio, 3)
         End Get
     End Property
 End Class

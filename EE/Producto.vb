@@ -91,7 +91,31 @@ Public MustInherit Class Producto
         End Set
     End Property
 
+    Private vValoracion As Integer
+    Public Property Valoracion() As Integer
+        Get
+            Return vValoracion
+        End Get
+        Set(ByVal value As Integer)
+            vValoracion = value
+        End Set
+    End Property
+
+    Private vListaComentarios As New List(Of Comentario)
+    Public Property ListaComentarios() As List(Of Comentario)
+        Get
+            Return vListaComentarios
+        End Get
+        Set(ByVal value As List(Of Comentario))
+            vListaComentarios = value
+        End Set
+    End Property
+
     Public MustOverride Function CalcularPrecio() As Double
+
+    Public MustOverride Function CalcularIva() As Double
+
+    Public MustOverride Function CalcularPrecioConIva() As Double
 
     Public MustOverride Function CalcularCosto() As Double
 
@@ -107,5 +131,7 @@ Public MustInherit Class Producto
         End If
         Return ""
     End Function
+
+    Public MustOverride Function CrearOrdenesProduccion(ByVal cantidad As Integer) As List(Of OrdenProduccion)
 
 End Class

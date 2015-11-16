@@ -81,4 +81,9 @@ Public Class UsuarioBLL
     Public Function VerificarExistenciaPorEmail(ByVal email As String) As Boolean
         Return Me.vMapper.VerificarExistenciaPorEmail(email)
     End Function
+
+    Public Function ListarClientes() As List(Of Usuario)
+        Return vMapper.ListarClientes()
+    End Function
+
 End Class

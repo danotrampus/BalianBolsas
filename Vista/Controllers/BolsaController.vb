@@ -146,4 +146,119 @@ Public Class BolsaController
         Return RedirectToAction("Index")
     End Function
 
+    <Autorizar()>
+    Function Comentar(ByVal productoId As Integer) As ActionResult
+        Dim c As New Comentario
+        c.Producto.Id = productoId
+        Return View(c)
+    End Function
+
+    <Autorizar()>
+    <HttpPost()>
+    Function Comentar(ByVal c As Comentario) As ActionResult
+        If ModelState.IsValid Then
+            Me.vBLL.Comentar(c)
+        End If
+        Return RedirectToAction("Agregar", "Pedido", New With {c.Producto.Id})
+    End Function
+
+    <HttpPost()>
+    Function Comparar(ByVal form As FormCollection) As ActionResult
+        Dim ids = form.Item("productosId")
+        Dim listaProductos As List(Of Bolsa) = Me.vBLL.Comparar(ids)
+        Return View(listaProductos)
+    End Function
+
+    Function ListarAjax() As JsonResult
+        Dim draw = Request("draw")
+        Dim inicio = Request("start")
+        Dim cantidadPorPagina = Request("length")
+
+        'Obtiene todos los registros
+        Dim lista As List(Of Bolsa) = Me.vBLL.ListarBolsas()
+
+        'Se aplican todos los filtros
+        Dim listaFiltrada As List(Of Bolsa) = lista
+        If Not [String].IsNullOrEmpty(Request("search[value]")) Then
+            Dim busqueda As String = Request("search[value]").ToLower()
+            listaFiltrada = listaFiltrada.Where(Function(x) x.ObtenerDescripcionMedidas.Contains(busqueda) Or _
+                                                            x.Polimero.Nombre.ToLower().Contains(busqueda) Or _
+                                                            x.Impresion.Nombre.ToLower().Contains(busqueda) Or _
+                                                            x.Soldadura.ToLower().Contains(busqueda) Or _
+                                                            x.Formato.ToLower().Contains(busqueda) Or _
+                                                            x.Manija.Nombre.ToLower().Contains(busqueda) Or _
+                                                            x.CalcularPrecioConIva().ToString("0.00").Contains(busqueda)).ToList()
+        End If
+        If Not [String].IsNullOrEmpty(Request("PolimeroId")) Then
+            Dim PolimeroId As Integer = Convert.ToInt16(Request("PolimeroId"))
+            listaFiltrada = listaFiltrada.Where(Function(x) x.Polimero.Id = PolimeroId).ToList()
+        End If
+        If Not [String].IsNullOrEmpty(Request("ImpresionId")) Then
+            Dim ImpresionId As Integer = Convert.ToInt16(Request("ImpresionId"))
+            listaFiltrada = listaFiltrada.Where(Function(x) x.Impresion.Id = ImpresionId).ToList()
+        End If
+        If Not [String].IsNullOrEmpty(Request("ManijaId")) Then
+            Dim ManijaId As Integer = Convert.ToInt16(Request("ManijaId"))
+            listaFiltrada = listaFiltrada.Where(Function(x) x.Manija.Id = ManijaId).ToList()
+        End If
+
+        'Se aplica el ordenamiento
+        Dim sortColumnIndex = Convert.ToInt32(Request("order[0][column]"))
+        Dim orderingFunction As Func(Of Bolsa, Object) = (Function(b) _
+            If(sortColumnIndex = 0, b.Id, _
+                If(sortColumnIndex = 1, b.Id, _
+                    If(sortColumnIndex = 2, b.Id, _
+                        If(sortColumnIndex = 3, b.Id, _
+                            If(sortColumnIndex = 4, b.ObtenerDescripcionMedidas(), _
+                                If(sortColumnIndex = 5, b.Polimero.Nombre, _
+                                    If(sortColumnIndex = 7, b.Impresion.Nombre, _
+                                        If(sortColumnIndex = 8, b.Soldadura, _
+                                            If(sortColumnIndex = 9, b.Formato, _
+                                                If(sortColumnIndex = 10, b.Manija.Nombre, b.CalcularPrecioConIva())
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+        Dim sortDirection = Request("order[0][dir]")
+        If sortDirection = "asc" Then
+            listaFiltrada = listaFiltrada.OrderBy(orderingFunction).ToList()
+        Else
+            listaFiltrada = listaFiltrada.OrderByDescending(orderingFunction).ToList()
+        End If
+
+        'Se aplica el paginado
+        Dim listaModel As List(Of BolsaListAjaxViewModel) =
+            listaFiltrada _
+            .Select(Function(x) New BolsaListAjaxViewModel With {
+                .Acciones = x.Id,
+                .Seleccion = x.Id,
+                .Valoracion = x.Valoracion,
+                .Imagen = x.Imagen,
+                .Medida = x.ObtenerDescripcionMedidas(),
+                .Polimero = x.Polimero.Nombre,
+                .Impresion = x.Impresion.Nombre,
+                .Soldadura = x.Soldadura,
+                .Formato = x.Formato,
+                .Manija = x.Manija.Nombre,
+                .PrecioUnitario = x.CalcularPrecioConIva().ToString("0.00")
+            }) _
+            .Skip(inicio) _
+            .Take(cantidadPorPagina) _
+            .ToList()
+
+        'Se forma el json y se retorno por ajax
+        Return Json(New With { _
+            Key .draw = draw, _
+            Key .recordsTotal = lista.Count.ToString, _
+            Key .recordsFiltered = listaFiltrada.Count.ToString, _
+            Key .data = listaModel _
+        }, JsonRequestBehavior.AllowGet)
+    End Function
+
 End Class

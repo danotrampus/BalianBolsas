@@ -48,6 +48,10 @@ Public Class BundleConfig
         bundles.Add(New StyleBundle("~/Content/datepicker/css").Include(
             "~/Content/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.css"))
 
+        'Css Star-Rating
+        bundles.Add(New StyleBundle("~/Content/star-rating/css").Include(
+            "~/Content/global/plugins/bootstrap-star-rating/css/star-rating.css"))
+
         'Css Error
         bundles.Add(New StyleBundle("~/Content/error/css").Include(
             "~/Content/admin/pages/css/error.css"))
@@ -121,5 +125,9 @@ Public Class BundleConfig
             "~/Content/global/plugins/flot/jquery.flot.stack.js",
             "~/Content/global/plugins/flot/jquery.flot.crosshair.js",
             "~/Content/global/plugins/flot/jquery.flot.categories.js"))
+
+        'Js Star-Rating
+        bundles.Add(New ScriptBundle("~/Content/star-rating/js").Include(
+            "~/Content/global/plugins/bootstrap-star-rating/js/star-rating.js"))
     End Sub
 End Class

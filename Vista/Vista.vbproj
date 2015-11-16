@@ -182,10 +182,13 @@
     <Compile Include="Chat\UsuarioChatModel.vb" />
     <Compile Include="Controllers\BaseController.vb" />
     <Compile Include="Controllers\BolsaController.vb" />
+    <Compile Include="Controllers\CategoriaController.vb" />
+    <Compile Include="Controllers\ClienteController.vb" />
     <Compile Include="Controllers\ContactoController.vb" />
     <Compile Include="Controllers\EncuestaController.vb" />
     <Compile Include="Controllers\ColorController.vb" />
     <Compile Include="Controllers\ImpresionController.vb" />
+    <Compile Include="Controllers\OrdenProduccionController.vb" />
     <Compile Include="Controllers\PedidoController.vb" />
     <Compile Include="Controllers\PolimeroController.vb" />
     <Compile Include="Controllers\ManijaController.vb" />
@@ -203,12 +206,15 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CarroExtensions.vb" />
     <Compile Include="Helpers\DropdownLenguajeExtensions.vb" />
     <Compile Include="Helpers\MenuVerticalExtensions.vb" />
     <Compile Include="ModelBinder\CustomModelBinder.vb" />
+    <Compile Include="Models\BolsaListAjaxViewModel.vb" />
     <Compile Include="Models\BitacoraListAjaxViewModel.vb" />
     <Compile Include="Models\BolsaViewModel.vb" />
     <Compile Include="Models\CambioClaveViewModel.vb" />
+    <Compile Include="Models\ComprarViewModel.vb" />
     <Compile Include="Models\FloatChartSerializableModel.vb" />
     <Compile Include="Models\IdiomaEditarViewModel.vb" />
     <Compile Include="Models\LogInViewModel.vb" />
@@ -348,6 +354,8 @@
     <Content Include="Content\global\plugins\bootstrap-sessiontimeout\package.json" />
     <Content Include="Content\global\plugins\bootstrap-sessiontimeout\README.md" />
     <Content Include="Content\global\plugins\bootstrap-summernote\README.md" />
+    <Content Include="Content\global\plugins\bootstrap-summernote\summernote.css" />
+    <Content Include="Content\global\plugins\bootstrap-summernote\summernote.js" />
     <Content Include="Content\global\plugins\bootstrap-switch\LICENSE" />
     <Content Include="Content\global\plugins\bootstrap-switch\README.md" />
     <Content Include="Content\global\plugins\bootstrap-timepicker\LICENSE" />
@@ -2757,8 +2765,8 @@
     <Content Include="Content\global\plugins\bootstrap-summernote\lang\summernote-vi-VN.js" />
     <Content Include="Content\global\plugins\bootstrap-summernote\lang\summernote-zh-CN.js" />
     <Content Include="Content\global\plugins\bootstrap-summernote\lang\summernote-zh-TW.js" />
-    <Content Include="Content\global\plugins\bootstrap-summernote\summernote.css" />
-    <Content Include="Content\global\plugins\bootstrap-summernote\summernote.js" />
+    <Content Include="Content\global\plugins\bootstrap-summernote\summernote-backup.css" />
+    <Content Include="Content\global\plugins\bootstrap-summernote\summernote-backup.js" />
     <Content Include="Content\global\plugins\bootstrap-summernote\summernote.min.js" />
     <Content Include="Content\global\plugins\bootstrap-switch\css\bootstrap-switch.css" />
     <Content Include="Content\global\plugins\bootstrap-switch\css\bootstrap-switch.min.css" />
@@ -4739,6 +4747,15 @@
     <Content Include="Views\Bolsa\Editar.vbhtml" />
     <Content Include="Views\Pedido\VerCarro.vbhtml" />
     <Content Include="Views\Pedido\Agregar.vbhtml" />
+    <Content Include="Views\Pedido\Comprar.vbhtml" />
+    <Content Include="Views\Pedido\Exito.vbhtml" />
+    <Content Include="Views\Cliente\Index.vbhtml" />
+    <Content Include="Views\Cliente\Detalle.vbhtml" />
+    <Content Include="Views\OrdenProduccion\Index.vbhtml" />
+    <Content Include="Views\Pedido\Index.vbhtml" />
+    <Content Include="Views\Pedido\Detalle.vbhtml" />
+    <Content Include="Views\Bolsa\Comentar.vbhtml" />
+    <Content Include="Views\Bolsa\Comparar.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

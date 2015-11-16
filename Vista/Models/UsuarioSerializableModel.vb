@@ -51,4 +51,15 @@ Public Class UsuarioSerializableModel
         End Set
     End Property
 
+    Private vEmail As String
+    Public Property Email() As String
+        Get
+            Return vEmail
+        End Get
+        Set(ByVal value As String)
+            vEmail = value
+        End Set
+    End Property
+
+
 End Class

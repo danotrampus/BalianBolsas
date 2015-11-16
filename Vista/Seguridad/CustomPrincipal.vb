@@ -57,6 +57,16 @@ Public Class CustomPrincipal
         End Set
     End Property
 
+    Private vEmail As String
+    Public Property Email() As String
+        Get
+            Return vEmail
+        End Get
+        Set(ByVal value As String)
+            vEmail = value
+        End Set
+    End Property
+
     Public Function IsInRole(permiso As String) As Boolean Implements IPrincipal.IsInRole
         If Permisos.Any(Function(r) permiso.Contains(r)) Then
             Return True

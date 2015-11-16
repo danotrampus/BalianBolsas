@@ -30,7 +30,7 @@ End Section
 @Section javascript_codigo
     <script type="text/javascript">
         $(document).ready(function () {
-            var table = $('#tablaPedido');
+            var table = $('#tablaPedidos');
 
             table.dataTable({
                 "sDom": "<'table-responsive' t>",
@@ -80,7 +80,7 @@ End Section
                 </div>
             </div>
             <div class="portlet-body">
-                <table class="table table-striped table-bordered table-hover" id="tablaPedido">
+                <table class="table table-striped table-bordered table-hover" id="tablaPedidos">
                     <thead>
                         <tr>
                             <th>Producto</th>
@@ -103,14 +103,14 @@ End Section
                                             @item.Cantidad
                                         </td>
                                         <td>
-                                            @item.Producto.CalcularPrecio()
+                                            @item.Producto.CalcularPrecioConIva()
                                         </td>
                                         <td>
                                             @item.Total
                                         </td>
                                         <td class="text-center">
                                             @Code
-                                                @Html.ActionLink("Quitar", "Pedido", New With {.productoId = item.Producto.Id}, New With {.class = "btn red btn-xs"})
+                                                @Html.ActionLink("Quitar", "Quitar", "Pedido", New With {.id = item.Producto.Id}, New With {.class = "btn red btn-xs"})
                                             End Code
                                         </td>
                                     </tr>
@@ -120,8 +120,13 @@ End Section
                     </tbody>
                 </table>
                 <div class="row">
-                    <div class="col-md-12 pull-right">
-                        <h3>@Model.Importe</h3>
+                    <div class="col-md-6">
+                        <h3>Total $@Model.Importe</h3>
+                    </div>
+                    <div class="col-md-6">
+                        @If User IsNot Nothing Then
+                            @<a href="@Url.Action("Comprar", "Pedido")" class="btn blue pull-right" style="margin-top:15px">Comenzar con la compra</a>
+                        End If 
                     </div>
                 </div>
             </div>

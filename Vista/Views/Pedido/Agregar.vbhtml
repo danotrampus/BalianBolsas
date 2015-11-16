@@ -21,6 +21,31 @@ End Code
     </ul>
 End Section
 
+@Section stylesheets
+    @Styles.Render("~/Content/star-rating/css")
+    <style>
+        .star-yellow {
+            color: yellow;
+        }
+
+        .star-gray {
+            color: gray;
+        }
+    </style>
+End Section
+
+@Section javascripts
+    @Scripts.Render("~/Content/star-rating/js")
+End Section
+
+@Section javascript_codigo
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Valoracion").rating();
+        });
+    </script>
+End Section
+
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN Portlet PORTLET-->
@@ -35,34 +60,87 @@ End Section
                             Información Básica
                         </a>
                     </li>
+                    <li>
+                        <a href="#portlet_tab2" data-toggle="tab">
+                            Comentarios
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="portlet-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="portlet_tab1">
-                        <p>
-                            <img class="img-responsive" src="@Model.Producto.Imagen" /><br />
-                            Ancho (cm): @Model.Producto.Ancho<br />
-                            Largo (cm): @Model.Producto.Largo<br />
-                            Espesor (µm): @Model.Producto.Espesor<br />
-                            Soldadura: @Model.Producto.Soldadura<br />
-                            Formato: @Model.Producto.Formato<br />
-                            Manija: @DirectCast(Model.Producto, EE.Bolsa).ObtenerDescripcionManija()<br />
-                            Impresion: @Model.Producto.ObtenerDescripcionImpresion()<br />
-                            Polímero: @Model.Producto.Polimero.Nombre<br />
-                        </p>
-                        @Using Html.BeginForm()
-                            @Html.AntiForgeryToken()
-                            @Html.HiddenFor(Function(model) model.Producto.Id)
-                            @<input type="hidden" name="ProductoType" value="Bolsa" />
-                            @<div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Cantidad))), Nothing, "has-error"))">
-                                @Html.LabelFor(Function(model) model.Cantidad, New With {.class = "control-label"})
-                                @Html.TextBoxFor(Function(model) model.Cantidad, New With {.class = "form-control"})
-                                @Html.ValidationMessageFor(Function(model) model.Cantidad, Nothing, New With {.class = "help-block"})
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <p>
+                                            <img class="img-responsive" src="@Model.Producto.Imagen" />
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            Ancho (cm): @Model.Producto.Ancho<br />
+                                            Largo (cm): @Model.Producto.Largo<br />
+                                            Espesor (µm): @Model.Producto.Espesor<br />
+                                            Soldadura: @Model.Producto.Soldadura<br />
+                                            Formato: @Model.Producto.Formato<br />
+                                            Manija: @DirectCast(Model.Producto, EE.Bolsa).ObtenerDescripcionManija()<br />
+                                            Impresion: @Model.Producto.ObtenerDescripcionImpresion()<br />
+                                            Polímero: @Model.Producto.Polimero.Nombre<br />
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
-                            @<button type="submit" class="btn blue">Grabar</button>
-                        End Using
+                        </div>
+                        @Using Html.BeginForm()
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(Function(model) model.Producto.Id)
+                        @<input type="hidden" name="ProductoType" value="Bolsa" />
+                        @<div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Cantidad))), Nothing, "has-error"))">
+                            @Html.LabelFor(Function(model) model.Cantidad, New With {.class = "control-label"})
+                            @Html.TextBoxFor(Function(model) model.Cantidad, New With {.class = "form-control input-small"})
+                            @Html.ValidationMessageFor(Function(model) model.Cantidad, Nothing, New With {.class = "help-block"})
+                        </div>
+                        @<button type="submit" class="btn blue">Grabar</button>
+                                End Using
                     </div>
+                    <div class="tab-pane" id="portlet_tab2">
+                        <div class="list-group">
+                            @code
+
+                                @For Each item In Model.Producto.ListaComentarios
+
+								    @<a href="javascript:;" class="list-group-item">
+								        <h4 class="list-group-item-heading">
+                                            @For index = 1 To 5
+                                            If index <= item.Valoracion Then
+                                                @<i class="fa fa-star star-yellow"></i>
+                                            Else
+                                                @<i class="fa fa-star star-gray"></i>
+                                            End If
+                                            Next
+                                        </h4>
+								        <p class="list-group-item-text">
+									         @item.Mensaje
+								        </p>
+								    </a>
+                                Next
+                            End Code
+                        </div>
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    @Code
+                                        If User IsNot Nothing Then
+                                            Html.RenderAction("Comentar", "Bolsa", New With {.productoId = Model.Producto.Id})
+                                        End If
+                                    End Code
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

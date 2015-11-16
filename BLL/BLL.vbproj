@@ -63,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriaBLL.vb" />
+    <Compile Include="MovimientoBLL.vb" />
+    <Compile Include="OrdenProduccionBLL.vb" />
+    <Compile Include="PedidoBLL.vb" />
     <Compile Include="ProductoBLL.vb" />
     <Compile Include="ContactoBLL.vb" />
     <Compile Include="EncuestaBLL.vb" />

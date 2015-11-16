@@ -31,4 +31,12 @@ Public Class ProductoBLL
         Return vMapper.ConsultarPorId(id)
     End Function
 
+    Public Function Comparar(ByVal ids As String) As List(Of Bolsa)
+        Return Me.vMapper.Comparar(ids)
+    End Function
+
+    Public Function Comentar(ByVal entidad As Comentario) As Boolean
+        Return Me.vMapper.Comentar(entidad)
+    End Function
+
 End Class

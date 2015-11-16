@@ -67,8 +67,12 @@
     <Compile Include="Bolsa.vb" />
     <Compile Include="Categoria.vb" />
     <Compile Include="Color.vb" />
+    <Compile Include="Comentario.vb" />
     <Compile Include="Contacto.vb" />
     <Compile Include="DetallePedido.vb" />
+    <Compile Include="DetalleMovimiento.vb" />
+    <Compile Include="Direccion.vb" />
+    <Compile Include="Factura.vb" />
     <Compile Include="Impresion.vb" />
     <Compile Include="Manija.vb" />
     <Compile Include="MateriaPrima.vb" />
@@ -77,8 +81,13 @@
     <Compile Include="Familia.vb" />
     <Compile Include="Idioma.vb" />
     <Compile Include="Encuesta.vb" />
+    <Compile Include="Movimiento.vb" />
+    <Compile Include="NotaCredito.vb" />
+    <Compile Include="NotaDebito.vb" />
     <Compile Include="Novedad.vb" />
     <Compile Include="Opcion.vb" />
+    <Compile Include="OrdenProduccion.vb" />
+    <Compile Include="Pago.vb" />
     <Compile Include="Patente.vb" />
     <Compile Include="Pedido.vb" />
     <Compile Include="Perfil.vb" />

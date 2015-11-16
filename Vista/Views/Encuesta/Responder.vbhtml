@@ -8,7 +8,7 @@
 <div class="portlet box grey-cascade">
     <div class="portlet-title">
         <div class="caption">
-            <i class="fa fa-question"></i>Encuesta
+            <i class="fa fa-question"></i>@Model.Tipo
         </div>
         <div class="tools">
             <a href="javascript:;" class="collapse">

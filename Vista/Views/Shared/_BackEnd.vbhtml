@@ -72,11 +72,6 @@ End Code
                             Novedades
                         </a>
                     </li>
-                    <li class="classic-menu-dropdown">
-                        <a href="@Url.Action("VerCarro", "Pedido")">
-                            Compra Actual
-                        </a>
-                    </li>
                 </ul>
             </div>
             <!-- END LOGO -->
@@ -87,6 +82,7 @@ End Code
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="top-menu">
                 <ul class="nav navbar-nav pull-right">
+                    @Html.Carro()
                     <!-- BEGIN LANGUAGE BAR -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                     @Html.DropdownLenguaje()

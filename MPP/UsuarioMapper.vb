@@ -38,6 +38,9 @@ Public Class UsuarioMapper
         parametros.Add("@Apellido", u.Apellido)
         parametros.Add("@Email", u.Email)
         parametros.Add("@NombreUsuario", u.NombreUsuario)
+        If u.Telefono IsNot Nothing Then
+            parametros.Add("@Telefono", u.Telefono)
+        End If
         Dim dt As New DataTable()
         dt.Columns.Add("Perfil_Id")
         For Each id As Integer In u.PerfilesId
@@ -106,6 +109,53 @@ Public Class UsuarioMapper
                 Next
                 u.ListaPerfiles = lista
             End If
+
+            Dim listaMovimientos As New List(Of Movimiento)
+            If ds.Tables(2).Rows.Count > 0 Then
+                For Each row3 As DataRow In ds.Tables(2).Rows
+                    Dim m As Movimiento = Nothing
+                    Select Case row3("Tipo")
+                        Case "Factura"
+                            m = New Factura
+                        Case "NotaCredito"
+                            m = New NotaCredito
+                        Case "NotaDebito"
+                            m = New NotaDebito
+                        Case "Pago"
+                            m = New Pago
+                    End Select
+
+                    m.Numero = row3("Numero")
+                    m.TipoComprobante = row3("TipoComprobante")
+                    If IsDBNull(row3("Observacion")) = False Then
+                        m.Observacion = row3("Observacion")
+                    End If
+                    m.Importe = row3("Importe")
+                    listaMovimientos.Add(m)
+                Next
+            End If
+            u.ListaMovimientos = listaMovimientos
+
+            Dim listaPedidos As New List(Of Pedido)
+            If ds.Tables(3).Rows.Count > 0 Then
+                For Each row4 As DataRow In ds.Tables(3).Rows
+                    Dim p As New Pedido
+                    p.Id = row4("Id")
+                    p.FechaInicio = row4("FechaInicio")
+                    If IsDBNull(row4("FechaFin")) = False Then
+                        p.FechaFin = row4("FechaFin")
+                    End If
+                    p.Estado = row4("Estado")
+                    p.Importe = row4("Importe")
+                    p.Direccion.Calle = row4("Direccion_Calle")
+                    p.Direccion.Numero = row4("Direccion_Numero")
+                    p.Direccion.DptoPiso = row4("Direccion_DptoPiso")
+                    p.Direccion.Localidad = row4("Direccion_Localidad")
+                    listaPedidos.Add(p)
+                Next
+            End If
+            u.ListaPedidos = listaPedidos
+
             Return u
         Else
             Return Nothing
@@ -202,4 +252,25 @@ Public Class UsuarioMapper
             Return False
         End If
     End Function
+
+    Public Function ListarClientes() As List(Of Usuario)
+        Dim ds As New DataSet
+        Dim lista As New List(Of Usuario)
+        ds = vDatos.Leer("SP_Usuario_ListarClientes", Nothing)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            For Each Item As DataRow In ds.Tables(0).Rows
+                Dim u As Usuario = New Usuario
+                u.Id = Item("Id")
+                u.Nombre = Item("Nombre")
+                u.Apellido = Item("Apellido")
+                u.Email = Item("Email")
+                u.NombreUsuario = Item("Nombre_Usuario")
+                lista.Add(u)
+            Next
+        End If
+
+        Return lista
+    End Function
+
 End Class

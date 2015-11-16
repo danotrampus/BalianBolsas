@@ -12,7 +12,7 @@ Public Class MateriaPrima
         End Set
     End Property
 
-    Private vNombre As String
+    Private vNombre As String = ""
     <Required(ErrorMessage:="Campo requerido")>
     Public Property Nombre() As String
         Get

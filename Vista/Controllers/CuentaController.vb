@@ -29,6 +29,7 @@ Public Class CuentaController
                 modeloSerializable.Nombre = usuario.Nombre
                 modeloSerializable.Apellido = usuario.Apellido
                 modeloSerializable.NombreUsuario = usuario.NombreUsuario
+                modeloSerializable.Email = usuario.Email
 
                 Dim usuarioDatos = JsonConvert.SerializeObject(modeloSerializable)
                 Dim authTicket As New FormsAuthenticationTicket(1, usuario.Email, DateTime.Now, DateTime.Now.AddMinutes(30), modelo.Recordarme, usuarioDatos)

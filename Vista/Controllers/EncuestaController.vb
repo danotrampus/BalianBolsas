@@ -71,8 +71,8 @@ Public Class EncuestaController
         Return View(e)
     End Function
 
-    Public Function Responder() As PartialViewResult
-        Dim vEncuesta As Encuesta = Me.vBLL.ConsultarRandomPorTipo("Encuesta")
+    Public Function Responder(ByVal tipo As String) As PartialViewResult
+        Dim vEncuesta As Encuesta = Me.vBLL.ConsultarRandomPorTipo(tipo)
         Return PartialView(vEncuesta)
     End Function
 
@@ -82,7 +82,7 @@ Public Class EncuestaController
             Me.vBLL.Responder(e.Respuesta)
         End If
         ModelState.Clear()
-        Return PartialView(Me.vBLL.ConsultarRandomPorTipo("Encuesta"))
+        Return PartialView(Me.vBLL.ConsultarRandomPorTipo(e.Tipo))
     End Function
 
 End Class

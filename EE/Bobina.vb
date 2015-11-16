@@ -1,7 +1,6 @@
 ﻿Public Class Bobina
     Inherits Producto
 
-
     Public Overrides Function CalcularCosto() As Double
         Dim volumen, pesoEspecifico, costoMateriaPrima, costoImpresion As Double
         volumen = Me.Ancho * 1000 * Me.Espesor
@@ -25,5 +24,17 @@
 
     Public Overrides Function ObtenerNombre() As String
         Return ""
+    End Function
+
+    Public Overrides Function CalcularIva() As Double
+        Return 0
+    End Function
+
+    Public Overrides Function CalcularPrecioConIva() As Double
+        Return 0
+    End Function
+
+    Public Overrides Function CrearOrdenesProduccion(ByVal cantidad As Integer) As List(Of OrdenProduccion)
+        Return Nothing
     End Function
 End Class
