@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriaMapper.vb" />
+    <Compile Include="InformeMapper.vb" />
     <Compile Include="MovimientoMapper.vb" />
     <Compile Include="OrdenProduccionMapper.vb" />
     <Compile Include="PedidoMapper.vb" />

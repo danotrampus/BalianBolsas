@@ -107,7 +107,7 @@ End Code
                                     @item.Cantidad
                                 </td>
                                 <td>
-                                    $@item.Producto.CalcularPrecioConIva().ToString("0.00")
+                                    $@item.Producto.CalcularPrecioConIva().ToString("0.000")
                                 </td>
                                 <td>
                                     $@item.Total.ToString("0.00")

@@ -69,11 +69,13 @@
     <Compile Include="Color.vb" />
     <Compile Include="Comentario.vb" />
     <Compile Include="Contacto.vb" />
+    <Compile Include="DetalleInformeTiempoRespuesta.vb" />
     <Compile Include="DetallePedido.vb" />
     <Compile Include="DetalleMovimiento.vb" />
     <Compile Include="Direccion.vb" />
     <Compile Include="Factura.vb" />
     <Compile Include="Impresion.vb" />
+    <Compile Include="InformeTiempoRespuesta.vb" />
     <Compile Include="Manija.vb" />
     <Compile Include="MateriaPrima.vb" />
     <Compile Include="Mensaje.vb" />

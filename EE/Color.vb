@@ -14,6 +14,7 @@ Public Class Color
 
     Private vNombre As String
     <Required(ErrorMessage:="Campo requerido")>
+    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
     Public Property Nombre() As String
         Get
             Return vNombre
@@ -25,6 +26,7 @@ Public Class Color
 
     Private vCodigo As String
     <Required(ErrorMessage:="Campo requerido")>
+    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
     Public Property Codigo() As String
         Get
             Return vCodigo

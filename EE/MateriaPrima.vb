@@ -13,7 +13,7 @@ Public Class MateriaPrima
     End Property
 
     Private vNombre As String = ""
-    <Required(ErrorMessage:="Campo requerido")>
+    <Required(ErrorMessage:="Campo requerido"), StringLength(100, ErrorMessage:="Se ha superado la longitud permitida de 100 caracteres.")>
     Public Property Nombre() As String
         Get
             Return vNombre

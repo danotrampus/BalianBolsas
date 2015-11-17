@@ -146,7 +146,7 @@ End Section
                                      @item.ObtenerDescripcionManija()
                                  </td>
                                  <td>
-                                     $@item.CalcularPrecioConIva().ToString("0.00")
+                                     $@item.CalcularPrecioConIva().ToString("0.000")
                                  </td>
                             </tr>
                         Next

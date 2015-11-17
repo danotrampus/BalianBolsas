@@ -191,6 +191,7 @@
     <Compile Include="Controllers\EncuestaController.vb" />
     <Compile Include="Controllers\ColorController.vb" />
     <Compile Include="Controllers\ImpresionController.vb" />
+    <Compile Include="Controllers\InformeController.vb" />
     <Compile Include="Controllers\MovimientoController.vb" />
     <Compile Include="Controllers\OrdenProduccionController.vb" />
     <Compile Include="Controllers\PedidoController.vb" />
@@ -222,6 +223,7 @@
     <Compile Include="Models\FloatChartSerializableModel.vb" />
     <Compile Include="Models\IdiomaEditarViewModel.vb" />
     <Compile Include="Models\LogInViewModel.vb" />
+    <Compile Include="Models\MovimientoListAjaxViewModel.vb" />
     <Compile Include="Models\NovedadViewModel.vb" />
     <Compile Include="Models\RegistrarViewModel.vb" />
     <Compile Include="Models\SuscribirseViewModel.vb" />
@@ -577,6 +579,10 @@
     <Content Include="Content\global\plugins\uniform\css\uniform.default.scss" />
     <Content Include="Content\global\plugins\uniform\README.md" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Views\Categoria\Crear.vbhtml" />
+    <Content Include="Views\Categoria\Detalle.vbhtml" />
+    <Content Include="Views\Categoria\Editar.vbhtml" />
+    <Content Include="Views\Categoria\Index.vbhtml" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -4763,11 +4769,12 @@
     <Content Include="Views\Bolsa\Comentar.vbhtml" />
     <Content Include="Views\Bolsa\Comparar.vbhtml" />
     <Content Include="Views\Movimiento\Detalle.vbhtml" />
+    <Content Include="Views\Informe\ListadoInformeTiempoRespuesta.vbhtml" />
+    <Content Include="Views\Movimiento\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Resguardos\Resguardo %2810-11-2015 19.33.30%29.bak" />
-    <Content Include="Resguardos\Resguardo %2810-11-2015 19.33.56%29.bak" />
+    <Content Include="Resguardos\Resguardo %2817-11-2015 18.39.05%29.bak" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

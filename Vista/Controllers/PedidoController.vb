@@ -35,6 +35,7 @@ Public Class PedidoController
         Return RedirectToAction("Detalle", New With {.id = id})
     End Function
 
+    <Autorizar()>
     Function Comprar() As ActionResult
         Dim model As New ComprarViewModel
         model.Pedido = Me.ObtenerCarro()
@@ -43,6 +44,7 @@ Public Class PedidoController
         Return View(model)
     End Function
 
+    <Autorizar()>
     <HttpPost()>
     Function Comprar(ByVal model As ComprarViewModel) As ActionResult
         If model.ClienteCondicion IsNot Nothing Then

@@ -40,17 +40,31 @@ End Section
             <div class="portlet-body">
                 <div class="tab-content">
                     <div class="tab-pane active" id="portlet_tab1">
-                        <p>
-                            <img class="img-responsive" src="@Model.Imagen" /><br />
-                            Ancho (cm): @Model.Ancho<br />
-                            Largo (cm): @Model.Largo<br />
-                            Espesor (µm): @Model.Espesor<br />
-                            Soldadura: @Model.Soldadura<br />
-                            Formato: @Model.Formato<br />
-                            Manija: @Model.ObtenerDescripcionManija()<br />
-                            Impresion: @Model.ObtenerDescripcionImpresion()<br />
-                            Polímero: @Model.Polimero.Nombre<br />
-                        </p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <p>
+                                            <img class="img-responsive" src="@Model.Imagen" />
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <p>
+                                            Ancho (cm): @Model.Ancho<br />
+                                            Largo (cm): @Model.Largo<br />
+                                            Espesor (µm): @Model.Espesor<br />
+                                            Soldadura: @Model.Soldadura<br />
+                                            Formato: @Model.Formato<br />
+                                            Manija: @DirectCast(Model, EE.Bolsa).ObtenerDescripcionManija()<br />
+                                            Impresion: @Model.ObtenerDescripcionImpresion()<br />
+                                            Polímero: @Model.Polimero.Nombre<br />
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

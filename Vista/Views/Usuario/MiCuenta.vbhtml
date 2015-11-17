@@ -130,7 +130,7 @@ End Section
                                                 $@item.ObtenerImporte.ToString("0.00")
                                             </td>
                                              <td class="text-center">
-                                                 @Html.ActionLink("Exportar", "GenerarPdf", "Movimiento", New With {.tipo = item.ObtenerTipoSinFormato().ToString(), .numero = item.Numero.ToString(), .tipoComprobante = item.TipoComprobante.ToString()}, New With {.class = "btn btn-xs default"})
+                                                 @Html.ActionLink("Exportar", "GenerarPdf", "Movimiento", New With {.tipo = item.ObtenerSoloTipo().ToString(), .numero = item.Numero.ToString(), .tipoComprobante = item.TipoComprobante.ToString()}, New With {.class = "btn btn-xs default"})
                                              </td>
                                         </tr>
                                         Next

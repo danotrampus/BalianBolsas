@@ -43,6 +43,13 @@ Public Class BolsaController
     Function Crear(ByVal model As BolsaViewModel) As ActionResult
         ModelState.Item("ImpresionId").Errors.Clear()
         ModelState.Item("ManijaId").Errors.Clear()
+        Dim listaTiposImagenes As New List(Of String)
+        listaTiposImagenes.AddRange({"image/gif", "image/jpeg", "image/png"})
+        If model.Imagen IsNot Nothing Then
+            If listaTiposImagenes.Contains(model.Imagen.ContentType) = False Then
+                ModelState.AddModelError("Imagen", "Tipo de archivo no permitido")
+            End If
+        End If
         If ModelState.IsValid Then
             Dim directorioSubidas As String = "~/Content/img"
             Dim urlSubidas As String = "/Content/img"
@@ -99,6 +106,12 @@ Public Class BolsaController
         ModelState.Item("ManijaId").Errors.Clear()
         If model.Imagen Is Nothing Then
             ModelState.Item("Imagen").Errors.Clear()
+        Else
+            Dim listaTiposImagenes As New List(Of String)
+            listaTiposImagenes.AddRange({"image/gif", "image/jpeg", "image/png"})
+            If listaTiposImagenes.Contains(model.Imagen.ContentType) = False Then
+                ModelState.AddModelError("Imagen", "Tipo de archivo no permitido")
+            End If
         End If
         If ModelState.IsValid Then
             Dim b As New Bolsa
@@ -187,7 +200,7 @@ Public Class BolsaController
                                                             x.Soldadura.ToLower().Contains(busqueda) Or _
                                                             x.Formato.ToLower().Contains(busqueda) Or _
                                                             x.Manija.Nombre.ToLower().Contains(busqueda) Or _
-                                                            x.CalcularPrecioConIva().ToString("0.00").Contains(busqueda)).ToList()
+                                                            x.CalcularPrecioConIva().ToString("0.000").Contains(busqueda)).ToList()
         End If
         If Not [String].IsNullOrEmpty(Request("PolimeroId")) Then
             Dim PolimeroId As Integer = Convert.ToInt16(Request("PolimeroId"))
@@ -246,7 +259,7 @@ Public Class BolsaController
                 .Soldadura = x.Soldadura,
                 .Formato = x.Formato,
                 .Manija = x.Manija.Nombre,
-                .PrecioUnitario = x.CalcularPrecioConIva().ToString("0.00")
+                .PrecioUnitario = x.CalcularPrecioConIva().ToString("0.000")
             }) _
             .Skip(inicio) _
             .Take(cantidadPorPagina) _

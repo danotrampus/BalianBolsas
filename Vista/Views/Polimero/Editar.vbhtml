@@ -66,7 +66,7 @@ End Section
                         </div>
                          <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Densidad))), Nothing, "has-error"))">
                              @Html.LabelFor(Function(model) model.Densidad, New With {.class = "control-label"})
-                             @Html.TextBoxFor(Function(model) model.Densidad, New With {.class = "form-control"})
+                             @Html.TextBoxFor(Function(model) model.Densidad, New With {.class = "form-control", .placeholder = "X,XXXXXX"})
                              @Html.ValidationMessageFor(Function(model) model.Densidad, Nothing, New With {.class = "help-block"})
                          </div>
                          <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Color.Id))), Nothing, "has-error"))">
@@ -76,7 +76,7 @@ End Section
                          </div>
                          <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Precio))), Nothing, "has-error"))">
                              <label class="control-label">Precio Kilogramo</label>
-                             @Html.TextBoxFor(Function(model) model.Precio, New With {.class = "form-control"})
+                             @Html.TextBoxFor(Function(model) model.Precio, New With {.class = "form-control", .placeholder = "XXXXXX,XXX"})
                              @Html.ValidationMessageFor(Function(model) model.Precio, Nothing, New With {.class = "help-block"})
                          </div>
                     </div>

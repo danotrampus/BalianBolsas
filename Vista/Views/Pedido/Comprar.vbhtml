@@ -147,7 +147,7 @@ End Section
                                     </div>
                                     <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteCuit))), Nothing, "has-error"))">
                                         <label class="control-label">CUIT:</label>
-                                        @Html.TextBoxFor(Function(model) model.ClienteCuit, New With {.class = "form-control"})
+                                        @Html.TextBoxFor(Function(model) model.ClienteCuit, New With {.class = "form-control", .placeholder = "XX-XXXXXXXX-X"})
                                         @Html.ValidationMessageFor(Function(model) model.ClienteCuit, Nothing, New With {.class = "help-block"})
                                     </div>
                                     <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteNombre))), Nothing, "has-error"))">
@@ -244,8 +244,8 @@ End Section
                                             <label class="control-label">Medio de pago:</label>
                                             @Html.DropDownListFor(Function(model) model.TarjetaNombre, New List(Of SelectListItem)() From { _
                                                 New SelectListItem() With {.Text = "Visa", .Value = "Visa"},
-                                                New SelectListItem() With {.Text = "Master Card", .Value = "Master Card"},
-                                                New SelectListItem() With {.Text = "American Express", .Value = "American Express"}
+                                                New SelectListItem() With {.Text = "MasterCard", .Value = "Master Card"},
+                                                New SelectListItem() With {.Text = "AmericanExpress", .Value = "American Express"}
                                                 }, "", New With {.class = "form-control"})
                                             @Html.ValidationMessageFor(Function(model) model.TarjetaNombre, Nothing, New With {.class = "help-block"})
                                         </div>
@@ -261,12 +261,12 @@ End Section
                                         </div>
                                         <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaNumero))), Nothing, "has-error"))">
                                             <label class="control-label">Número:</label>
-                                            @Html.TextBoxFor(Function(model) model.TarjetaNumero, New With {.class = "form-control"})
+                                            @Html.TextBoxFor(Function(model) model.TarjetaNumero, New With {.class = "form-control", .placeholder = "XXXXXXXXXXXXXXXX"})
                                             @Html.ValidationMessageFor(Function(model) model.TarjetaNumero, Nothing, New With {.class = "help-block"})
                                         </div>
                                         <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaCodigoSeguridad))), Nothing, "has-error"))">
                                             <label class="control-label">Código de Seguridad:</label>
-                                            @Html.TextBoxFor(Function(model) model.TarjetaCodigoSeguridad, New With {.class = "form-control"})
+                                            @Html.TextBoxFor(Function(model) model.TarjetaCodigoSeguridad, New With {.class = "form-control", .placeholder = "XXX"})
                                             @Html.ValidationMessageFor(Function(model) model.TarjetaCodigoSeguridad, Nothing, New With {.class = "help-block"})
                                         </div>
                                         <div class="form-group @IIf(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaFechaVencimiento))), Nothing, "has-error")">

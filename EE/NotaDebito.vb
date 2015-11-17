@@ -20,6 +20,10 @@
     End Function
 
     Public Overrides Function ObtenerTipoSinFormato() As String
+        Return "NotaDebito " + Me.TipoComprobante
+    End Function
+
+    Public Overrides Function ObtenerSoloTipo() As String
         Return "NotaDebito"
     End Function
 End Class

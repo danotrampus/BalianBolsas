@@ -109,10 +109,10 @@ End Section
             If User.IsInRole("ListarPerfiles") Then
                 @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn default"})
             End If
-            If Model.Nombre <> "Administrador" And User.IsInRole("EditarPerfil") Then
+            If Model.Nombre <> "Administrador" And Model.Nombre <> "Cliente" And User.IsInRole("EditarPerfil") Then
                 @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn blue"})
             End If
-            If Model.Nombre <> "Administrador" And User.IsInRole("EliminarPerfil") Then
+            If Model.Nombre <> "Administrador" And Model.Nombre <> "Cliente" And User.IsInRole("EliminarPerfil") Then
                 @<a class="btn red" data-toggle="modal" href="#delete-confirmation">Eliminar</a>
             End If
         End Code 

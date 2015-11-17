@@ -88,4 +88,6 @@
 
     Public MustOverride Function ObtenerTipoSinFormato() As String
 
+    Public MustOverride Function ObtenerSoloTipo() As String
+
 End Class

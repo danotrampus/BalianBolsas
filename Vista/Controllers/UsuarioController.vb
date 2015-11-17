@@ -153,7 +153,7 @@ Public Class UsuarioController
             Dim u As Usuario = Me.vBLL.ConsultarPorId(UsuarioActual.UsuarioId)
             If u IsNot Nothing Then
                 If model.ClaveVieja = u.Clave Then
-                    Me.vBLL.CambiarClave(u.Id, u.Clave, u.Email)
+                    Me.vBLL.CambiarClave(u.Id, model.ClaveNueva, u.Email)
                     Return RedirectToAction("MiCuenta")
                 Else
                     ModelState.AddModelError("ClaveVieja", "Contraseña anterior incorrecta")

@@ -13,7 +13,7 @@ Public Class Impresion
     End Property
 
     Private vPrecio As Double
-    <Required(ErrorMessage:="Campo requerido")>
+    <Required(ErrorMessage:="Campo requerido"), RegularExpression("^(\d{1,16}(\,\d{0,3})?)$", ErrorMessage:="Formato incorrecto")>
     Public Property Precio() As Double
         Get
             Return vPrecio
@@ -36,6 +36,7 @@ Public Class Impresion
 
     Private vTratado As String
     <Required(ErrorMessage:="Campo requerido")>
+    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
     Public Property Tratado() As String
         Get
             Return vTratado

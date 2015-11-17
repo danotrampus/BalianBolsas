@@ -305,6 +305,8 @@ Public Class ProductoMapper
                 colorManija.Nombre = Item("ManijaColorNombre")
                 colorManija.Codigo = Item("ManijaColorCodigo")
                 m.Color = colorManija
+
+                DirectCast(entidad, Bolsa).Manija = m
             End If
             Dim listaComentarios As New List(Of Comentario)
             If ds.Tables(1).Rows.Count > 0 Then

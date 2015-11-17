@@ -24,4 +24,8 @@ Public Class MovimientoBLL
         Return vMapper.Consultar(tipo, numero, tipoComprobante)
     End Function
 
+    Public Function Listar() As List(Of Movimiento)
+        Return vMapper.Listar()
+    End Function
+
 End Class

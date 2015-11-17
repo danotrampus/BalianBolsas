@@ -9,15 +9,24 @@ Public Class ColorBLL
     End Sub
 
     Public Function Crear(ByVal entidad As Color) As Boolean
-        Return vMapper.Crear(entidad)
+        If vMapper.Crear(entidad) Then
+            Servicios.BitacoraServicio.Crear(TipoEvento.Informacion, "Alta de Color")
+        End If
+        Return True
     End Function
 
     Public Function Editar(ByVal entidad As Color) As Boolean
-        Return vMapper.Editar(entidad)
+        If vMapper.Editar(entidad) Then
+            Servicios.BitacoraServicio.Crear(TipoEvento.Informacion, "Edición de Color")
+        End If
+        Return True
     End Function
 
     Public Function Eliminar(ByVal id As Integer) As Boolean
-        Return vMapper.Eliminar(id)
+        If vMapper.Eliminar(id) Then
+            Servicios.BitacoraServicio.Crear(TipoEvento.Informacion, "Baja de Color")
+        End If
+        Return True
     End Function
 
     Public Function Listar() As List(Of Color)
