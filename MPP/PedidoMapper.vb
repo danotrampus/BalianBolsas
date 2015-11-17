@@ -78,10 +78,11 @@ Public Class PedidoMapper
             p.Estado = row.Item("Estado")
             p.Direccion.Calle = row.Item("Calle")
             p.Direccion.Numero = row.Item("Numero")
-            If IsDBNull(row.Item("DptoPiso")) = False Then
-                p.Direccion.DptoPiso = row.Item("DptoPiso")
+            If IsDBNull(row.Item("Dpto_Piso")) = False Then
+                p.Direccion.DptoPiso = row.Item("Dpto_Piso")
             End If
             p.Direccion.Localidad = row.Item("Localidad")
+            p.Usuario.Id = row.Item("Usuario_Id")
             p.Usuario.Nombre = row.Item("Nombre")
             p.Usuario.Apellido = row.Item("Apellido")
             p.Usuario.NombreUsuario = row.Item("Nombre_Usuario")
@@ -148,6 +149,12 @@ Public Class PedidoMapper
         Else
             Return Nothing
         End If
+    End Function
+
+    Public Function Anular(ByVal id As Integer) As Boolean
+        Dim parametros As New Hashtable
+        parametros.Add("@Id", id)
+        Return vDatos.Escribir("SP_Pedido_Anular", parametros)
     End Function
 
 End Class

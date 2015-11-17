@@ -109,6 +109,7 @@ End Section
                                     <th>Número</th>
                                     <th>Observación</th>
                                     <th>Importe</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -126,8 +127,11 @@ End Section
                                                 @item.Observacion
                                             </td>
                                             <td>
-                                                @item.ObtenerImporte
+                                                $@item.ObtenerImporte.ToString("0.00")
                                             </td>
+                                             <td class="text-center">
+                                                 @Html.ActionLink("Exportar", "GenerarPdf", "Movimiento", New With {.tipo = item.ObtenerTipoSinFormato().ToString(), .numero = item.Numero.ToString(), .tipoComprobante = item.TipoComprobante.ToString()}, New With {.class = "btn btn-xs default"})
+                                             </td>
                                         </tr>
                                         Next
                                     End If
@@ -163,13 +167,13 @@ End Section
                                             @Html.DisplayFor(Function(modelItem) item.Id)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(Function(modelItem) item.FechaInicio)
+                                            @item.FechaInicio
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(Function(modelItem) item.FechaFin)
+                                            @IIf(item.FechaFin = Nothing, "", item.FechaFin)
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(Function(modelItem) item.Importe)
+                                            $@item.Importe.ToString("0.00")
                                         </td>
                                         <td>
                                             @Html.DisplayFor(Function(modelItem) item.Estado)
@@ -177,7 +181,7 @@ End Section
                                         <td class="text-center">
                                             @Code
                                             If User.IsInRole("ConsultarPedido") Then
-                                                    @Html.ActionLink("Ver", "Detalles", "Pedido", New With {.id = item.Id}, New With {.class = "btn btn-primary btn-cons"})
+                                                    @Html.ActionLink("Ver", "Detalle", "Pedido", New With {.id = item.Id}, New With {.class = "btn btn-xs default"})
                                             End If
                                             End Code
                                         </td>

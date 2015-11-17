@@ -24,9 +24,15 @@ Public Class PedidoController
     End Function
 
     <Autorizar(Roles:="ConsultarPedido")>
-    Function Detalles(ByVal id As Integer) As ActionResult
+    Function Detalle(ByVal id As Integer) As ActionResult
         Dim vPedido As Pedido = Me.vBLL.ConsutarPorId(id)
         Return View(vPedido)
+    End Function
+
+    <Autorizar(Roles:="AnularPedido")>
+    Function Anular(ByVal id As Integer) As ActionResult
+        Me.vBLL.Anular(id)
+        Return RedirectToAction("Detalle", New With {.id = id})
     End Function
 
     Function Comprar() As ActionResult

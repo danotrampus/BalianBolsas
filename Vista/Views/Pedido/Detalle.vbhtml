@@ -44,7 +44,6 @@ End Section
                             Número de orden: @Model.Id<br />
                             @Html.DisplayNameFor(Function(model) model.FechaInicio): @Html.DisplayFor(Function(model) model.FechaInicio)<br />
                             @Html.DisplayNameFor(Function(model) model.FechaFin): @IIf(Model.FechaInicio = Nothing, "", Model.FechaInicio)<br />
-                            @Html.DisplayNameFor(Function(model) model.Importe): @Html.DisplayFor(Function(model) model.Importe)<br />
                             @Html.DisplayNameFor(Function(model) model.Estado): @Html.DisplayFor(Function(model) model.Estado)<br />
                             @Html.DisplayNameFor(Function(model) model.Direccion.Descripcion): @Html.DisplayFor(Function(model) model.Direccion.Descripcion)<br />
                             @Html.DisplayNameFor(Function(model) model.Usuario.Nombre): @Html.DisplayFor(Function(model) model.Usuario.Nombre)<br />
@@ -55,23 +54,23 @@ End Section
                         <table class="table table-hover">
                             <thead>
                                 <tr>
+                                    <th>Producto</th>
                                     <th>Cantidad</th>
                                     <th>Precio</th>
-                                    <th>Producto</th>
                                     <th>Total</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @For Each item In Model.ListaDetalles
                                     @<tr>
+                                         <td>
+                                             @item.Producto.ObtenerNombre()
+                                         </td>
                                         <td>
                                             @Html.DisplayFor(Function(modelItem) item.Cantidad)
                                         </td>
                                         <td>
                                             $@item.Precio.ToString("0.00")
-                                        </td>
-                                        <td>
-                                            @Html.DisplayFor(Function(modelItem) item.Producto.ObtenerNombre())
                                         </td>
                                         <td>
                                             $@item.Total.ToString("0.00")
@@ -90,30 +89,27 @@ End Section
 <div class="row">
     <div class="col-md-12">
         @Code
-            If User.IsInRole("ListarPolimeros") Then
-        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn default"})
+            If User.IsInRole("ConsultarCliente") Then
+        @Html.ActionLink("Volver", "Detalle", "Cliente", New With {.id = Model.Usuario.Id}, New With {.class = "btn default"})
             End If
-            If User.IsInRole("EditarPolimero") Then
-        @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn blue"})
-            End If
-            If User.IsInRole("EliminarPolimero") Then
-        @<a class="btn red" data-toggle="modal" href="#delete-confirmation">Eliminar</a>
+            If User.IsInRole("AnularPedido") And Model.Estado = "Pendiente" Then
+        @<a class="btn red" data-toggle="modal" href="#delete-confirmation">Anular</a>
             End If
         End Code
     </div>
 </div>
 
-@Using Html.BeginForm("Eliminar", "Polimero", New With {.id = Model.Id}, FormMethod.Get)
+@Using Html.BeginForm("Anular", "Pedido", New With {.id = Model.Id}, FormMethod.Get)
     @Html.AntiForgeryToken()
     @<div class="modal fade" id="delete-confirmation" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">Confirma que desea eliminar el registro?</h4>
+                    <h4 class="modal-title">Confirma que desea anular el pedido?</h4>
                 </div>
                 <div class="modal-body">
-                    Esta operación no se puede deshacer.
+                    Esta operación no se puede deshacer. Se generará una nota de crédito a favor del cliente.
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn default" data-dismiss="modal">Cerrar</button>

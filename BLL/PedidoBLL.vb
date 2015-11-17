@@ -20,4 +20,8 @@ Public Class PedidoBLL
         Return vMapper.Crear(entidad)
     End Function
 
+    Public Function Anular(ByVal id As Integer) As Boolean
+        Return vMapper.Anular(id)
+    End Function
+
 End Class

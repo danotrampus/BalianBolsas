@@ -1,7 +1,7 @@
 ﻿Public Class NotaDebito
     Inherits Movimiento
 
-    Private vDireccion As Direccion
+    Private vDireccion As New Direccion
     Public Property Direccion() As Direccion
         Get
             Return vDireccion

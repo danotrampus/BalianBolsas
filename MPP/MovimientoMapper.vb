@@ -112,6 +112,13 @@ Public Class MovimientoMapper
                     DirectCast(m, Factura).Direccion.Localidad = row.Item("Direccion_Localidad")
                 Case "NotaCredito"
                     m = New NotaCredito
+
+                    DirectCast(m, NotaCredito).Direccion.Calle = row.Item("Direccion_Calle")
+                    DirectCast(m, NotaCredito).Direccion.Numero = row.Item("Direccion_Numero")
+                    If IsDBNull(row.Item("Direccion_DptoPiso")) = False Then
+                        DirectCast(m, NotaCredito).Direccion.DptoPiso = row.Item("Direccion_DptoPiso")
+                    End If
+                    DirectCast(m, NotaCredito).Direccion.Localidad = row.Item("Direccion_Localidad")
                 Case "NotaDebito"
                     m = New NotaDebito
                 Case "Pago"

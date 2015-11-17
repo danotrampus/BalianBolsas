@@ -103,10 +103,10 @@ End Section
                                  @Html.DisplayFor(Function(modelItem) currentItem.FechaInicio)
                              </td>
                              <td>
-                                 @Html.DisplayFor(Function(modelItem) currentItem.FechaFin)
+                                 @IIf(item.FechaFin = Nothing, "", item.FechaFin)
                              </td>
                              <td>
-                                 @Html.DisplayFor(Function(modelItem) currentItem.Importe)
+                                 $@item.Importe.ToString("0.00")
                              </td>
                              <td>
                                  @Html.DisplayFor(Function(modelItem) currentItem.Estado)
@@ -117,7 +117,7 @@ End Section
                              <td class="text-center">
                                  @Code
                                  If User.IsInRole("ConsultarPedido") Then
-                                     @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                                     @Html.ActionLink("Ver", "Detalle", New With {.id = currentItem.Id}, New With {.class = "btn btn-xs default"})
                                  End If
                                  End Code
                              </td>
