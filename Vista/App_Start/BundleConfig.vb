@@ -5,10 +5,16 @@ Public Class BundleConfig
     ' Para obtener más información acerca de Bundling, consulte http://go.microsoft.com/fwlink/?LinkId=254725
     Public Shared Sub RegisterBundles(ByVal bundles As BundleCollection)
         'Css Global
+        bundles.Add(New StyleBundle("~/Content/global/plugins/font-awesome/css").Include(
+            "~/Content/global/plugins/font-awesome/css/font-awesome.css"))
+
+        bundles.Add(New StyleBundle("~/Content/global/plugins/simple-line-icons").Include(
+            "~/Content/global/plugins/simple-line-icons/simple-line-icons.css"))
+
+        bundles.Add(New StyleBundle("~/Content/global/plugins/bootstrap/css").Include(
+            "~/Content/global/plugins/bootstrap/css/bootstrap.css"))
+
         bundles.Add(New StyleBundle("~/Content/global/css").Include(
-            "~/Content/global/plugins/font-awesome/css/font-awesome.css",
-            "~/Content/global/plugins/simple-line-icons/simple-line-icons.css",
-            "~/Content/global/plugins/bootstrap/css/bootstrap.css",
             "~/Content/global/plugins/uniform/css/uniform.default.css",
             "~/Content/global/plugins/bootstrap-switch/css/bootstrap-switch.css"))
 

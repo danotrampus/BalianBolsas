@@ -12,4 +12,8 @@ Public Class InformeBLL
         Return Me.vMapper.ListarInformeTiempoRespuesta()
     End Function
 
+    Function ObtenerGanancias(ByVal desde As Date, ByVal hasta As Date) As List(Of InformeGanancias)
+        Return Me.vMapper.ObtenerGanancias(desde, hasta)
+    End Function
+
 End Class

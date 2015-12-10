@@ -15,6 +15,9 @@ End Code
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    @Styles.Render("~/Content/global/plugins/font-awesome/css")
+    @Styles.Render("~/Content/global/plugins/simple-line-icons")
+    @Styles.Render("~/Content/global/plugins/bootstrap/css")
     @Styles.Render("~/Content/global/css")
     <!-- END GLOBAL MANDATORY STYLES -->
     <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->

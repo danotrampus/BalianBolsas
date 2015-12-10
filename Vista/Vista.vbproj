@@ -579,6 +579,13 @@
     <Content Include="Content\global\plugins\uniform\css\uniform.default.scss" />
     <Content Include="Content\global\plugins\uniform\README.md" />
     <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Content\img\426a9389-e228-4e90-aded-4d554eaa451c.jpg" />
+    <Content Include="Content\img\5d0691c7-2626-4d32-99b4-e25664fe940b.jpg" />
+    <Content Include="Content\img\6aa6a819-40b2-4a67-9d1a-fc8215d03946.jpg" />
+    <Content Include="Content\img\9cf1d9db-a327-4e42-873a-999b9ab51a65.jpg" />
+    <Content Include="Content\img\a8b067a8-b575-4c70-9ed9-7bc4277d4041.jpg" />
+    <Content Include="Content\img\d4e2fd08-22fd-4bed-854c-571b0d832b47.JPG" />
+    <Content Include="Content\img\ed42a4f4-ac6b-41da-8d71-9b594a8ee938.jpg" />
     <Content Include="Views\Categoria\Crear.vbhtml" />
     <Content Include="Views\Categoria\Detalle.vbhtml" />
     <Content Include="Views\Categoria\Editar.vbhtml" />
@@ -587,6 +594,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\PublishProfiles\IIS Local.pubxml" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -4771,6 +4779,8 @@
     <Content Include="Views\Movimiento\Detalle.vbhtml" />
     <Content Include="Views\Informe\ListadoInformeTiempoRespuesta.vbhtml" />
     <Content Include="Views\Movimiento\Index.vbhtml" />
+    <Content Include="Views\Encuesta\Resultado.vbhtml" />
+    <Content Include="Views\Informe\ListadoInformeGanancias.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -4806,7 +4816,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
-    <Folder Include="Content\img\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.vbproj">

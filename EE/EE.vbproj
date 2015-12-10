@@ -75,6 +75,7 @@
     <Compile Include="Direccion.vb" />
     <Compile Include="Factura.vb" />
     <Compile Include="Impresion.vb" />
+    <Compile Include="InformeGanancias.vb" />
     <Compile Include="InformeTiempoRespuesta.vb" />
     <Compile Include="Manija.vb" />
     <Compile Include="MateriaPrima.vb" />

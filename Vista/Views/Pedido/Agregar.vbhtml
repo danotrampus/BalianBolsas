@@ -132,10 +132,15 @@ End Section
                         </div>
                             <div class="row">
                                 <div class="col-md-12">
-
                                     @Code
                                         If User IsNot Nothing Then
-                                            Html.RenderAction("Comentar", "Bolsa", New With {.productoId = Model.Producto.Id})
+                                            If Request.HttpMethod.ToLower() = "post" Then
+                                                If Request.RawUrl.Contains("Bolsa") Then
+                                                    Html.RenderAction("Comentar", "Bolsa", New With {.productoId = Model.Producto.Id})
+                                                End If
+                                            Else
+                                                Html.RenderAction("Comentar", "Bolsa", New With {.productoId = Model.Producto.Id})
+                                            End If
                                         End If
                                     End Code
                                 </div>
