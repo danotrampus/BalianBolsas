@@ -9,6 +9,9 @@ End Code
 <head>
     <meta charset="UTF-8">
     <title>Sample Invoice</title>
+    @Styles.Render("~/Content/global/plugins/font-awesome/css")
+    @Styles.Render("~/Content/global/plugins/simple-line-icons")
+    @Styles.Render("~/Content/global/plugins/bootstrap/css")
     @Styles.Render("~/Content/global/css")
 </head>
 

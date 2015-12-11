@@ -105,7 +105,7 @@ End Section
             $("#PagoConNC").trigger("change");
 
             var saldoAFavor = $("#SaldoAFavor").val();
-            if (saldoAFavor = "0") {
+            if (saldoAFavor == "0") {
                 $("#campoPagoNC").hide();
             }
         });
@@ -249,8 +249,8 @@ End Section
                                             <label class="control-label">Medio de pago:</label>
                                             @Html.DropDownListFor(Function(model) model.TarjetaNombre, New List(Of SelectListItem)() From { _
                                                 New SelectListItem() With {.Text = "Visa", .Value = "Visa"},
-                                                New SelectListItem() With {.Text = "MasterCard", .Value = "Master Card"},
-                                                New SelectListItem() With {.Text = "AmericanExpress", .Value = "American Express"}
+                                                New SelectListItem() With {.Text = "MasterCard", .Value = "MasterCard"},
+                                                New SelectListItem() With {.Text = "AmericanExpress", .Value = "AmericanExpress"}
                                                 }, "", New With {.class = "form-control"})
                                             @Html.ValidationMessageFor(Function(model) model.TarjetaNombre, Nothing, New With {.class = "help-block"})
                                         </div>
