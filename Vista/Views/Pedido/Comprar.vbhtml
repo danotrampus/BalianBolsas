@@ -103,6 +103,11 @@ End Section
 
             $("#ClienteCondicion").trigger("change");
             $("#PagoConNC").trigger("change");
+
+            var saldoAFavor = $("#SaldoAFavor").val();
+            if (saldoAFavor = "0") {
+                $("#campoPagoNC").hide();
+            }
         });
     </script>
 End Section
@@ -209,7 +214,7 @@ End Section
                                     </div>
                                 </div>
                                 <div class="portlet-body">
-                                    <div class="row">
+                                    <div class="row" id="campoPagoNC">
                                         <div class="col-md-6 col-sm-12">
                                             <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.PagoConNC))), Nothing, "has-error"))">
                                                 <div class="checkbox">

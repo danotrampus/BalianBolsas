@@ -135,7 +135,7 @@ Public Class PedidoController
 
             'Se compensa las notas de credito con la factura dada de alta anteriormente
             If model.PagoConNC Then
-                Me.vMovimientoBLL.Compensar(usuarioLogeado.Id, model.SaldoAFavor)
+                Me.vMovimientoBLL.Compensar(usuarioLogeado.Id, nuevoPedido.Importe - importeTarjeta)
             End If
 
             'Se elimina el carrito de compra
